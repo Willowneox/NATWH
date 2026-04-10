@@ -11,16 +11,31 @@ public class Player : MonoBehaviour
     [Header("Rigidbody2D")]
     public Rigidbody2D rb;
 
+    [Header("Battery Life")]
+    public float batteryLeft;
+
+    [Header("Scrap Count")]
+    public int scrap = 0;
+
     [Header("Upgrades")]
-    public int scrapCount = 0;
-    int batteries = 0;
+    // add u_ before these variables, to make the code easier to read
+
+    // each upgrade needs a base value, number of upgrades, and benefit per upgrade
+    // ex: battery has a base value of 20, u_batteries to track num of battery upgrades owned, and BONUS_CHARGE_PER_BATTERY
+    public int u_batteries = 0;
+    public const float B_BATTERY = 20f;
+    public const float U_BONUS_CHARGE_PER_BATTERY = 5f;
+
 
     private void Start()
     {
         rb.gravityScale = 0f;
+
+        batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
     }
     void FixedUpdate()
     {
+
         if (Mouse.current.leftButton.isPressed)
         {
             Move();

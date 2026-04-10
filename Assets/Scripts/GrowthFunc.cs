@@ -6,7 +6,7 @@ public static class GrowthFunc
 {
     // variable to slow rate of change of fibonacci
     const float k = 0.5f;
-   public static int Fibonacci(int n)
+    public static int Fibonacci(int n)
     {
         if (n <= 2) return 1;
 
