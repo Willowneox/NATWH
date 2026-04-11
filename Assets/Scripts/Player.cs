@@ -142,6 +142,9 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void UseKey(){
+        u_roomCount--;
+    }
    
     public void FreezeMovement()
     {

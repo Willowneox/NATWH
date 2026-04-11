@@ -24,8 +24,9 @@ public class Plant : MonoBehaviour
         this.spawner = spawner;
     }
 
-    private void OnTriggerEnter(Collider o){
+    private void OnTriggerEnter2D(Collider2D o){
         if(o.CompareTag("Blade")){
+            Debug.Log("hi");
             spawner.CutPlant(gameObject);
         }
     }
