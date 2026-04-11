@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public Animator animator;
+    public SpriteRenderer sr;
 
     [Header("Movement Settings")]
     public float playerAccel = 15f;
@@ -36,6 +37,8 @@ public class Player : MonoBehaviour
         rb.gravityScale = 0f;
 
         batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
+        if (sr == null)
+            sr = GetComponent<SpriteRenderer>();
     }
     void FixedUpdate()
     {
@@ -79,5 +82,9 @@ public class Player : MonoBehaviour
 
         animator.SetBool("isMoving", isMoving);
         animator.SetBool("isFacingBack", isFacingBack);
+        if (lastMoveDirection.x != 0)
+        {
+            sr.flipX = lastMoveDirection.x < 0;
+        }
     }
 }
