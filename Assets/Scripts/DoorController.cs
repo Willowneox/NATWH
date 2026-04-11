@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.Events;
 public class DoorController : MonoBehaviour
 {
     [Header("Visuals")]
@@ -7,6 +7,9 @@ public class DoorController : MonoBehaviour
     public GameObject unlockedVisual;
 
     public bool IsUnlocked { get; private set; }
+    public bool isOnTrigger { get; private set; }
+
+    private Player player;
 
     Vector2Int _cellA;
     Vector2Int _cellB;
@@ -19,6 +22,24 @@ public class DoorController : MonoBehaviour
         RefreshVisuals();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")){
+            isOnTrigger = true;
+            player = collision.GetComponentInParent<Player>();
+        } 
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")) isOnTrigger = false;
+    }
+
+    private void OnMouseDown(){
+        if(isOnTrigger){
+            Interact(player);
+        }
+    }
     // !!INCOMPLETE!!
     // player script needs:
     // - public variable Keys > tracks how many keys the player is holding
@@ -27,9 +48,9 @@ public class DoorController : MonoBehaviour
     {
         if (IsUnlocked) return;
 
-        // if (player.Keys <= 0) return;
+        if (player.GetComponent<Player>().u_roomCount <= 0) return;
 
-        // player.UseKey()
+        player.GetComponent<Player>().UseKey();
         Unlock();
 
         RoomManager.Instance.RefreshDoorBetween(_cellA, _cellB);
