@@ -37,7 +37,7 @@ public class Blade : MonoBehaviour
     }
 
     private void StartCutting(){
-        Vector2 newPosition = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 newPosition = (Vector2)mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         transform.position = newPosition;
 
         cutting = true;
@@ -48,11 +48,11 @@ public class Blade : MonoBehaviour
 
     private void StopCutting(){
         cutting = false;
-        bladeCollider.enabled = true;
+        bladeCollider.enabled = false;
     }
 
     private void ContCutting(){
-        Vector2 newPosition = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 newPosition = (Vector2)mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         direction = newPosition - (Vector2)transform.position;
 
         float velo = direction.magnitude / Time.deltaTime;
