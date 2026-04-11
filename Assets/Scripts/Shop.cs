@@ -6,6 +6,8 @@ public class Shop : MonoBehaviour
     public Player player;
     public GameObject UpgradesCanvas;
 
+    // IDEA: Disable buttons you cannot afford
+
     [Header("Upgrade Cost Text")]
     public Text batteryText;
     public Text roomKeyText;
@@ -14,6 +16,18 @@ public class Shop : MonoBehaviour
     public Text vacuumText;
     public Text moneyText;
 
+    [Header("Buttons")]
+    public Button vacuumButton;
+    public Button ovalOfficeButton;
+
+    [Header("Initial Upgrade Costs")] // these correspond to fibonacci numbers
+    public int initBatteryCost = 3;
+    public int initRoomKeyCost = 1;
+    public int initSpeedCost = 3;
+    public int initMoneyCost = 8;
+    public int initVacuumCost = 500;
+    public int ovalOfficeCost = 10000;
+    
     /*
      *      For each upgrade, create a new public Text object for the cost
      *      and copy the structure of the BuyBattery() function
@@ -26,28 +40,35 @@ public class Shop : MonoBehaviour
     {
         UpgradesCanvas = GameObject.Find("UpgradesCanvas");
         UpgradesCanvas.SetActive(false);
+
+        batteryText.text = GrowthFunc.Fibonacci(initBatteryCost).ToString();
+        roomKeyText.text = GrowthFunc.Fibonacci(initRoomKeyCost).ToString();
+        speedText.text = GrowthFunc.Fibonacci(initSpeedCost).ToString();
+        ovalOfficeKeyText.text = ovalOfficeCost.ToString();
+        vacuumText.text = initVacuumCost.ToString();
+        moneyText.text = GrowthFunc.Fibonacci(initMoneyCost).ToString();
     }
 
     public void BuyBattery()
     {
         // calculate cost of next battery from growth function
-        int currCost = GrowthFunc.Fibonacci(player.u_batteries + 1);
+        int currCost = GrowthFunc.Fibonacci(player.u_batteries + initBatteryCost);
 
         if (purchase(currCost))
         {
             player.u_batteries++;
-            batteryText.text = GrowthFunc.Fibonacci(player.u_batteries + 1).ToString();
+            batteryText.text = GrowthFunc.Fibonacci(player.u_batteries + initBatteryCost).ToString();
         }
     }
     
     public void BuyRoomKey()
     {
-        int currCost = GrowthFunc.Fibonacci(player.u_roomCount + 1);
+        int currCost = GrowthFunc.Fibonacci(player.u_roomCount + initRoomKeyCost);
 
         if (purchase(currCost))
         {
             player.u_roomCount++;
-            roomKeyText.text = GrowthFunc.Fibonacci(player.u_roomCount + 1).ToString();
+            roomKeyText.text = GrowthFunc.Fibonacci(player.u_roomCount + initRoomKeyCost).ToString();
         }
     }
 
@@ -61,21 +82,25 @@ public class Shop : MonoBehaviour
         if (purchase(cost))
         {
             player.u_ovalOfficeUnlocked = true;
+            // Disable button
+
+
             // TODO: Either trigger end of game cutscene here OR grey out this upgrade and let the player
             // walk over to the specific door.
             ovalOfficeKeyText.text = "N/A";
+            ovalOfficeButton.interactable = false;
         }
     }
 
     public void BuySpeed()
     {
-        int currCost = GrowthFunc.Fibonacci(player.u_speed + 1);
+        int currCost = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost);
 
         if (player.scrap < currCost) return;
 
         player.scrap -= currCost;
         player.u_speed++;
-        speedText.text = GrowthFunc.Fibonacci(player.u_speed + 1).ToString();
+        speedText.text = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost).ToString();
     }
 
     public void BuyVacuumFilter()
@@ -88,18 +113,18 @@ public class Shop : MonoBehaviour
         {
             player.u_vacuumFilterUnlocked = true;
             vacuumText.text = "N/A";
+            vacuumButton.interactable = false;
         }
     }
 
     public void buyMoneyUpgrade()
     {
-        const int offset = 10; // make this start at a higher cost for **balance** reasons
-        int currCost = GrowthFunc.Fibonacci(player.u_money + offset);
+        int currCost = GrowthFunc.Fibonacci(player.u_money + initMoneyCost);
 
         if (purchase(currCost))
         {
             player.u_money++;
-            moneyText.text = GrowthFunc.Fibonacci(player.u_money + offset).ToString();
+            moneyText.text = GrowthFunc.Fibonacci(player.u_money + initMoneyCost).ToString();
         }
     }
 
