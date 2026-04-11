@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MinigameTrash : MonoBehaviour
+public class TrashClickSpawner : MonoBehaviour
 {
     public GameObject trashPrefab;
 
@@ -32,6 +32,7 @@ public class MinigameTrash : MonoBehaviour
         if(numOfTrash <=0)
         {
             // scrap reward
+            MinigameSpawner.Instance.EndMinigame();
             Destroy(gameObject);
         }
     }

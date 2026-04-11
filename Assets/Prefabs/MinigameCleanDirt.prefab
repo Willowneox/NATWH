@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5338699999012895601}
   - component: {fileID: 749874576839190736}
   m_Layer: 5
-  m_Name: Minigame_CleanDirt
+  m_Name: MinigameCleanDirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000026703, y: -0.0000076294}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 900, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5898052207825536990
