@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public const float INIT_SPEED_CAP = 8f;
     public float speedCap = INIT_SPEED_CAP;
     public float friction = 3f;
+    public bool canMove = true;
 
     [Header("Rigidbody2D")]
     public Rigidbody2D rb;
@@ -51,9 +52,22 @@ public class Player : MonoBehaviour
 
     private Vector2 lastMoveDirection = Vector2.down;
 
+    public static Player Instance;
+
     private void Start()
     {
-        rb.gravityScale = 0f;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+            rb.gravityScale = 0f;
+
+        speedCap = B_SPEED;
 
         batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
         if (sr == null)
@@ -66,14 +80,14 @@ public class Player : MonoBehaviour
     {
         if (batteryLeft < 0)
         {
-            triggerNoChargeEnging();
+            triggerNoChargeEnding();
             return;
         }
 
         // decrement battery life
         batteryLeft -= Time.fixedDeltaTime;
 
-        if (Mouse.current.leftButton.isPressed)
+        if (Mouse.current.leftButton.isPressed && canMove)
         {
             Move();
         }
@@ -97,19 +111,20 @@ public class Player : MonoBehaviour
             lastMoveDirection = direction;
         }
 
-        // accelerate
-        rb.AddForce(direction * playerAccel, ForceMode2D.Force);
-
         // clamp to speed cap
         if (rb.linearVelocity.magnitude > speedCap)
             rb.linearVelocity = rb.linearVelocity.normalized * speedCap;
+
+        // accelerate
+        rb.AddForce(direction * playerAccel, ForceMode2D.Force);
     }
 
-    // Called whenever an upgrade is purchased. Recalculates all stats.
+    // Called whenever an upgrade is purchased. Recalculates all stats. All 1 that is.
     public void handleUpgrade()
     {
         // battery life is taken care of in the start func, oval offic and vac are bools, scrap earned might depend on implementation of minigames
         // so this only touches speed for now.
+        // Debug.Log("Handling speed upgrade.");
         speedCap = B_SPEED + u_speed * U_SPEED_PER_UPGRADE;
     }
     
@@ -127,8 +142,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void triggerNoChargeEnging()
+   
+    public void FreezeMovement()
     {
+        canMove = false;
+        rb.linearVelocity = new Vector2(0, 0);
+    }
+    
+    public void UnfreezeMovement()
+    {
+        canMove = true;
+    }
+    
+     private void triggerNoChargeEnding()
+    {
+        FreezeMovement();
         // game over screen
     }
 }

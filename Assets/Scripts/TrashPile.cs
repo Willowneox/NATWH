@@ -3,47 +3,35 @@ using UnityEngine.Events;
 
 public class TrashPile : MonoBehaviour
 {
-    public int TrashID { get; private set; }
+    public bool isOnTrigger { get; private set; } = false;
+    private bool isCleaned = false;
 
-    public UnityEvent<int> OnCleaned;
-
-    bool _isCleaned = false;
-    bool _inMinigame = false;
-
-    public void Initialize(int id)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        TrashID = id;
-        _isCleaned = false;
-        _inMinigame = false;
-        gameObject.SetActive(true);
+        if (collision.CompareTag("Player")) isOnTrigger = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")) isOnTrigger = false;
+    }
+    private void OnMouseDown()
+    {
+        if (isOnTrigger && !isCleaned)
+        {
+            MinigameSpawner.Instance.OnMinigameComplete += OnMinigameComplete;
+            MinigameSpawner.Instance.StartMinigame();
+        }
     }
 
-    public void Interact()
+    private void OnMinigameComplete()
     {
-        if (_isCleaned || _inMinigame) return;
-        _inMinigame = true;
-        
-
-        // RUN A MINIGAME FROM HERE (idk the implementation yet)
+        Debug.Log("Minigame complete");
+        isCleaned = true;
+        Unsubscribe();
+        Destroy(gameObject);
     }
-
-    // Minigame should call this function
-    // If game was won ->                     OnMinigameWin(true)
-    // If game was lost or Ui was exited ->   OnMinigame(false)
-    public void OnMinigameWin(bool success)
+    private void Unsubscribe()
     {
-        _inMinigame = false;
-
-        if (success) Clean();
-    }
-
-    public void Clean()
-    {
-        _isCleaned = true;
-
-        // vfx or animation of trash disappearing
-
-        OnCleaned?.Invoke(TrashID);
-        gameObject.SetActive(false);
+        MinigameSpawner.Instance.OnMinigameComplete -= OnMinigameComplete;
     }
 }
