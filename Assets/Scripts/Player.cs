@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public const float INIT_SPEED_CAP = 8f;
     public float speedCap = INIT_SPEED_CAP;
     public float friction = 3f;
+    public bool canMove = true;
 
     [Header("Rigidbody2D")]
     public Rigidbody2D rb;
@@ -51,9 +52,20 @@ public class Player : MonoBehaviour
 
     private Vector2 lastMoveDirection = Vector2.down;
 
+    public static Player Instance;
+
     private void Start()
     {
-        rb.gravityScale = 0f;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+            rb.gravityScale = 0f;
 
         batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
         if (sr == null)
@@ -73,7 +85,7 @@ public class Player : MonoBehaviour
         // decrement battery life
         batteryLeft -= Time.fixedDeltaTime;
 
-        if (Mouse.current.leftButton.isPressed)
+        if (Mouse.current.leftButton.isPressed && canMove)
         {
             Move();
         }
@@ -127,6 +139,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void FreezeMovement()
+    {
+        canMove = false;
+        rb.linearVelocity = new Vector2(0, 0);
+    }
+    public void UnfreezeMovement()
+    {
+        canMove = true;
+    }
     private void triggerNoChargeEnging()
     {
         // game over screen

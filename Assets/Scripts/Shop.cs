@@ -140,12 +140,13 @@ public class Shop : MonoBehaviour
 
     public void OpenShop()
     {
+        Player.Instance.FreezeMovement();
         UpgradesCanvas.SetActive(true);
-
     }
         
         public void CloseShop()
     {
+        Player.Instance.UnfreezeMovement();
         UpgradesCanvas.SetActive(false);
     }
 

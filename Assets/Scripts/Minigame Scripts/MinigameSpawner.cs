@@ -40,11 +40,13 @@ public class MinigameSpawner : MonoBehaviour
 
     public void StartMinigame()
     {
+        Player.Instance.FreezeMovement();
         gameObject.SetActive(true);
     }
 
     public void EndMinigame()
     {
+        Player.Instance.UnfreezeMovement();
         gameObject.SetActive(false);
     }
 }
