@@ -1,4 +1,4 @@
-using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +10,11 @@ public class MinigameSpawner : MonoBehaviour
 
     public static MinigameSpawner Instance;
 
+    public event Action OnMinigameComplete;
+
     private void Awake()
     {
+        gameObject.SetActive(false);
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -23,7 +26,7 @@ public class MinigameSpawner : MonoBehaviour
     }
     private void OnEnable()
     {
-        int index = Random.Range(0, minigamePrefabs.Count);
+        int index = UnityEngine.Random.Range(0, minigamePrefabs.Count);
 
         currMinigame = minigamePrefabs[index];
 
@@ -47,6 +50,7 @@ public class MinigameSpawner : MonoBehaviour
     public void EndMinigame()
     {
         Player.Instance.UnfreezeMovement();
+        OnMinigameComplete?.Invoke();
         gameObject.SetActive(false);
     }
 }

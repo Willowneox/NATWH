@@ -117,7 +117,7 @@ public class RoomController : MonoBehaviour
             if (pile != null)
             {
                 int capturedId = spawnIndex;
-                pile.Initialize(capturedId);
+                //pile.Initialize(capturedId);
                 _activeTrash.Add(pile);
             }
         }
