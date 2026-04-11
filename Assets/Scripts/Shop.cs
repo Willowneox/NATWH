@@ -11,6 +11,7 @@ public class Shop : MonoBehaviour
     public Text ovalOfficeKeyText;
     public Text speedText;
     public Text vacuumText;
+    public Text moneyText;
 
     /*
      *      For each upgrade, create a new public Text object for the cost
@@ -82,5 +83,18 @@ public class Shop : MonoBehaviour
         player.u_vacuumFilterUnlocked = true;
 
         vacuumText.text = "N/A";
+    }
+
+    public void buyMoneyUpgrade()
+    {
+        const int offset = 10; // make this start at a higher cost for **balance** reasons
+        int currCost = GrowthFunc.Fibonacci(player.u_money + offset);  
+
+        if(player.scrap < currCost) return;
+        player.scrap -= currCost;
+        player.u_money++;
+            
+        moneyText.text = GrowthFunc.Fibonacci(player.u_money + offset).ToString();
+
     }
 }

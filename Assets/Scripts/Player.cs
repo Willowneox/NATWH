@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
     public const float U_SPEED_PER_UPGRADE = 4f; // Might need to play with this number.
 
     // Scrap earning upgrade...
+    public int u_money = 0;
+    public const float B_SCRAP_EARNED = 1.0f;
+    public const float U_SCRAP_EARNED_PER_UPGRADE = 0.2f; // Maybe consider using a growth function for these? idk
 
     private void Start()
     {
