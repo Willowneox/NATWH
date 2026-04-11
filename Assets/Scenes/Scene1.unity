@@ -2899,7 +2899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 951248181}
-  UpgradesCanvas: {fileID: 0}
+  UpgradesCanvas: {fileID: 1464237681}
   batteryText: {fileID: 840619945}
   roomKeyText: {fileID: 300387308}
   ovalOfficeKeyText: {fileID: 2127080468}
