@@ -17,6 +17,10 @@ public class Shop : MonoBehaviour
      *      - Function to a new button
      *      - Upgrade cost text object its variable
      */
+    private void Start()
+    {
+        UpgradesCanvas.SetActive(false);
+    }
     public void BuyBattery()
     {
         // calculate cost of next battery from growth function
