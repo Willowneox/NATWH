@@ -1743,7 +1743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13129ac635691b44cb718e4358698ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargingStation
-  shop: {fileID: 0}
+  shop: {fileID: 1464237686}
 --- !u!61 &723175917
 BoxCollider2D:
   m_ObjectHideFlags: 0
