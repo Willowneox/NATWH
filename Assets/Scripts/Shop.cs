@@ -6,7 +6,10 @@ public class Shop : MonoBehaviour
     public Player player;
 
     [Header("Upgrade Cost Text")]
-    public Text button_text;
+    public Text batteryText;
+    public Text roomKeyText;
+    public Text ovalOfficeKeyText;
+    public Text speedText;
 
     /*
      *      For each upgrade, create a new public Text object for the cost
@@ -25,7 +28,7 @@ public class Shop : MonoBehaviour
 
         player.scrap -= currCost;
         player.u_batteries++;
-        button_text.text = GrowthFunc.Fibonacci(player.u_batteries + 1).ToString();
+        batteryText.text = GrowthFunc.Fibonacci(player.u_batteries + 1).ToString();
     }
 
     public void BuyRoomKey()
@@ -36,7 +39,7 @@ public class Shop : MonoBehaviour
 
         player.scrap -= currCost;
         player.u_roomCount++;
-        button_text.text = GrowthFunc.Fibonacci(player.u_roomCount + 1).ToString();
+        roomKeyText.text = GrowthFunc.Fibonacci(player.u_roomCount + 1).ToString();
     }
 
     // This ends the game. Not sure if you want it in the upgrade menu but if not then delete this ig
@@ -50,5 +53,18 @@ public class Shop : MonoBehaviour
         player.ovalOfficeUnlocked = true;
         // TODO: Either trigger end of game cutscene here OR grey out this upgrade and let the player
         // walk over to the specific door.
+        ovalOfficeKeyText.text = "N/A";
     }
+
+    public void BuySpeed()
+    {
+        int currCost = GrowthFunc.Fibonacci(player.u_speed + 1);
+
+        if (player.scrap < currCost) return;
+
+        player.scrap -= currCost;
+        player.u_speed++;
+        speedText.text = GrowthFunc.Fibonacci(player.u_speed + 1).ToString();
+    }
+
 }
