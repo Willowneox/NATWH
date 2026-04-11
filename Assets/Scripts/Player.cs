@@ -4,10 +4,12 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public Animator animator;
+    public SpriteRenderer sr;
 
     [Header("Movement Settings")]
     public float playerAccel = 15f;
-    public float speedCap = 8f;
+    public const float INIT_SPEED_CAP = 8f;
+    public float speedCap = INIT_SPEED_CAP;
     public float friction = 3f;
 
     [Header("Rigidbody2D")]
@@ -28,17 +30,48 @@ public class Player : MonoBehaviour
     public const float B_BATTERY = 20f;
     public const float U_BONUS_CHARGE_PER_BATTERY = 5f;
 
-    private Vector2 lastMoveDirection = Vector2.down;
+    // Room key upgrade is 1 per time
+    public int u_roomCount = 0; 
+    public const float B_ROOM_COUNT = 1f;
+    public const float U_ROOM_COUNT_PER_UPGRADE = 1f;
 
+    // Oval office unlock is a 1 time purchase
+    public bool u_ovalOfficeUnlocked = false;
+    public bool u_vacuumFilterUnlocked = false;
+
+    // Speed upgrade
+    public int u_speed = 0;
+    public const float B_SPEED = INIT_SPEED_CAP;
+    public const float U_SPEED_PER_UPGRADE = 4f; // Might need to play with this number.
+
+    // Scrap earning upgrade...
+    public int u_money = 0;
+    public const float B_SCRAP_EARNED = 1.0f;
+    public const float U_SCRAP_EARNED_PER_UPGRADE = 0.2f; // Maybe consider using a growth function for these? idk
+
+    private Vector2 lastMoveDirection = Vector2.down;
 
     private void Start()
     {
         rb.gravityScale = 0f;
 
         batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
+        if (sr == null)
+            sr = GetComponent<SpriteRenderer>();
+
+        if (animator == null)
+            animator = GetComponent<Animator>();
     }
     void FixedUpdate()
     {
+        if (batteryLeft < 0)
+        {
+            triggerNoChargeEnging();
+            return;
+        }
+
+        // decrement battery life
+        batteryLeft -= Time.fixedDeltaTime;
 
         if (Mouse.current.leftButton.isPressed)
         {
@@ -71,6 +104,15 @@ public class Player : MonoBehaviour
         if (rb.linearVelocity.magnitude > speedCap)
             rb.linearVelocity = rb.linearVelocity.normalized * speedCap;
     }
+
+    // Called whenever an upgrade is purchased. Recalculates all stats.
+    public void handleUpgrade()
+    {
+        // battery life is taken care of in the start func, oval offic and vac are bools, scrap earned might depend on implementation of minigames
+        // so this only touches speed for now.
+        speedCap = B_SPEED + u_speed * U_SPEED_PER_UPGRADE;
+    }
+    
     //animation
     private void UpdateAnimation()
     {
@@ -79,5 +121,15 @@ public class Player : MonoBehaviour
 
         animator.SetBool("isMoving", isMoving);
         animator.SetBool("isFacingBack", isFacingBack);
+        if (lastMoveDirection.x != 0)
+        {
+            sr.flipX = lastMoveDirection.x < 0;
+        }
+    }
+
+    private void triggerNoChargeEnging()
+    {
+        // game over screen
     }
 }
+
