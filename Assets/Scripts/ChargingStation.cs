@@ -21,7 +21,5 @@ public class ChargingStation : MonoBehaviour
             shop.OpenShop();
             Debug.Log("yes we are openeing the shop");
         }
-        shop.OpenShop();
-        Debug.Log("yes we are openeing the shop");
     }
 }
