@@ -29,8 +29,9 @@ public class TrashDragSpawner : MonoBehaviour
     {
         numOfTrash--;
         if (numOfTrash <= 0)
-        {   
+        {
             // scrap reward
+            MinigameSpawner.Instance.EndMinigame();
             Destroy(gameObject);
         }
     }

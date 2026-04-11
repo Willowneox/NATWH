@@ -70,6 +70,7 @@ public class Clean : MonoBehaviour, IPointerDownHandler, IDragHandler
             if (percentCleaned >= 95)
             {
                 // scrap reward
+                MinigameSpawner.Instance.EndMinigame();
                 Destroy(gameObject);
             }
         }

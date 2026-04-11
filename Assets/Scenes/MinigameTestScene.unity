@@ -369,9 +369,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1007844073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b747885dadd754e48a72291c5086c3e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b75262099cf22d429297d79c8a52d38, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::MinigameSpawner
+  minigamePrefabs:
+  - {fileID: 6581490929458787827, guid: 85f078e41266b7f4faafff9e36c8a556, type: 3}
+  - {fileID: 8388667041403032907, guid: 2dea068dd9d950c4b82e2d94f1e6244a, type: 3}
+  - {fileID: 4967120258365943977, guid: 9dd2ad789e8289e4097d2bf8d909838c, type: 3}
 --- !u!1 &1690391500
 GameObject:
   m_ObjectHideFlags: 0
