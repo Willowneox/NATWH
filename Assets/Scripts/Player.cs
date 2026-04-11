@@ -79,4 +79,12 @@ public class Player : MonoBehaviour
         if (rb.linearVelocity.magnitude > speedCap)
             rb.linearVelocity = rb.linearVelocity.normalized * speedCap;
     }
+
+    // Called whenever an upgrade is purchased. Recalculates all stats.
+    public void handleUpgrade()
+    {
+        // battery life is taken care of in the start func, oval offic and vac are bools, scrap earned might depend on implementation of minigames
+        // so this only touches speed for now.
+        speedCap = B_SPEED + u_speed * U_SPEED_PER_UPGRADE;
+    }
 }
