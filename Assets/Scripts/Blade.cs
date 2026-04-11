@@ -5,7 +5,7 @@ public class Blade : MonoBehaviour
 {
     private bool cutting;
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private Collider bladeCollider;
+    [SerializeField] private Collider2D bladeCollider;
     public float minVelo = 0.1f;
     private Vector2 direction;
 
@@ -14,7 +14,7 @@ public class Blade : MonoBehaviour
     void Awake()
     {
         mainCamera = Camera.main;
-        bladeCollider = GetComponent<Collider>();
+        bladeCollider = GetComponent<Collider2D>();
         bladeTrail = GetComponentInChildren<TrailRenderer>();
     }
     private void OnEnable(){
@@ -27,9 +27,9 @@ public class Blade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)){
+        if(Mouse.current.leftButton.wasPressedThisFrame){
             StartCutting();
-        }else if (Input.GetMouseButtonUp(0)){
+        }else if (!Mouse.current.leftButton.isPressed){
             StopCutting();
         }else if (cutting){
             ContCutting();
