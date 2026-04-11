@@ -24,7 +24,7 @@ public class Shop : MonoBehaviour
      */
     public void Start()
     {
-        BackgroundPanel = GameObject.Find("BackgroundPanel");
+        UpgradesCanvas = GameObject.Find("UpgradesCanvas");
         UpgradesCanvas.SetActive(false);
     }
 
