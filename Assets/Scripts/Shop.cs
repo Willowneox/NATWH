@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     public Player player;
-    public GameObject BackgroundPanel;
+    public GameObject UpgradesCanvas;
 
     [Header("Upgrade Cost Text")]
     public Text button_text;
@@ -30,11 +30,11 @@ public class Shop : MonoBehaviour
     }
     public void OpenShop()
     {
-        BackgroundPanel.SetActive(true);
+        UpgradesCanvas.SetActive(true);
 
     }
     public void CloseShop()
     {
-        BackgroundPanel.SetActive(false);
+        UpgradesCanvas.SetActive(false);
     }
 }
