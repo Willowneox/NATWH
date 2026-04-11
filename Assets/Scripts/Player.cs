@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
     {
         rb.gravityScale = 0f;
 
+        speedCap = B_SPEED;
+
         batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
         if (sr == null)
             sr = GetComponent<SpriteRenderer>();
@@ -66,7 +68,7 @@ public class Player : MonoBehaviour
     {
         if (batteryLeft < 0)
         {
-            triggerNoChargeEnging();
+            triggerNoChargeEnding();
             return;
         }
 
@@ -105,11 +107,12 @@ public class Player : MonoBehaviour
             rb.linearVelocity = rb.linearVelocity.normalized * speedCap;
     }
 
-    // Called whenever an upgrade is purchased. Recalculates all stats.
+    // Called whenever an upgrade is purchased. Recalculates all stats. All 1 that is.
     public void handleUpgrade()
     {
         // battery life is taken care of in the start func, oval offic and vac are bools, scrap earned might depend on implementation of minigames
         // so this only touches speed for now.
+        Debug.Log("Handling speed upgrade.");
         speedCap = B_SPEED + u_speed * U_SPEED_PER_UPGRADE;
     }
     
@@ -127,7 +130,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void triggerNoChargeEnging()
+    private void triggerNoChargeEnding()
     {
         // game over screen
     }
