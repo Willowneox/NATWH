@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public Animator animator;
+    public SpriteRenderer sr;
+
     [Header("Movement Settings")]
     public float playerAccel = 15f;
     public const float INIT_SPEED_CAP = 8f;
@@ -27,10 +30,8 @@ public class Player : MonoBehaviour
     public const float B_BATTERY = 20f;
     public const float U_BONUS_CHARGE_PER_BATTERY = 5f;
 
-    // Start with 1 room, each key opens 1 more. Am I doing this right??
-    public int u_roomCount = 0;
-    public const float B_ROOM_COUNT = 1;
-    public const float U_ROOMS_PER_UPGRADE = 1;
+    private Vector2 lastMoveDirection = Vector2.down;
+
 
     // Oval office unlock is a 1 time purchase
     public bool u_ovalOfficeUnlocked = false;
@@ -51,6 +52,8 @@ public class Player : MonoBehaviour
         rb.gravityScale = 0f;
 
         batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
+        if (sr == null)
+            sr = GetComponent<SpriteRenderer>();
     }
     void FixedUpdate()
     {
@@ -63,6 +66,7 @@ public class Player : MonoBehaviour
         {
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, friction * Time.fixedDeltaTime);
         }
+        UpdateAnimation();
     }
 
     private void Move()
@@ -71,6 +75,12 @@ public class Player : MonoBehaviour
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         Vector2 direction = (mouseWorldPos - (Vector2)transform.position).normalized;
+
+        //tell the direction
+        if (direction.sqrMagnitude > 0.01f)
+        {
+            lastMoveDirection = direction;
+        }
 
         // accelerate
         rb.AddForce(direction * playerAccel, ForceMode2D.Force);
@@ -86,5 +96,19 @@ public class Player : MonoBehaviour
         // battery life is taken care of in the start func, oval offic and vac are bools, scrap earned might depend on implementation of minigames
         // so this only touches speed for now.
         speedCap = B_SPEED + u_speed * U_SPEED_PER_UPGRADE;
+    }
+    
+    //animation
+    private void UpdateAnimation()
+    {
+        bool isMoving = rb.linearVelocity.magnitude > 0.1f;
+        bool isFacingBack = lastMoveDirection.y > 0f;
+
+        animator.SetBool("isMoving", isMoving);
+        animator.SetBool("isFacingBack", isFacingBack);
+        if (lastMoveDirection.x != 0)
+        {
+            sr.flipX = lastMoveDirection.x < 0;
+        }
     }
 }
