@@ -1,15 +1,17 @@
 using UnityEngine;
 
 public class PlantMiniGame : MonoBehaviour
-{
-    int numOfPlants = Random.Range(4,6);
-    void Start()
+{   
+    public GameObject prefab;
+    private int numOfPlants;
+    void Awake()
     {
+        numOfPlants = Random.Range(4,6);
         for(int i = 0; i < numOfPlants; i++){
             int x_rand = Random.Range(-960,960);
             int y_rand = Random.Range(-540,540);
 
-            GameObject plant = Instantiate(plantPrefab, gameObject.transform);
+            GameObject plant = Instantiate(prefab, gameObject.transform);
             RectTransform rect = plant.GetComponent<RectTransform>();
             rect.localPosition = Vector3.zero;
             rect.localScale = Vector3.one;
@@ -26,7 +28,7 @@ public class PlantMiniGame : MonoBehaviour
         if(numOfPlants <=0)
         {
             // scrap reward
-            // MinigameSpawner.Instance.EndMinigame();
+            MinigameSpawner.Instance.EndMinigame();
             Destroy(gameObject);
         }
     }

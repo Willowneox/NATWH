@@ -11,7 +11,6 @@ public class MinigameSpawner : MonoBehaviour
     public static MinigameSpawner Instance;
 
     public event Action OnMinigameComplete;
-    public event Action OnMinigameInterrupted;
 
     private void Awake()
     {
