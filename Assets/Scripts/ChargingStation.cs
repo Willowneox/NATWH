@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class ChargingStation : MonoBehaviour
 {
-   // public UpgradesCanvas shop;
-    
-    private void OnTriggerEnter2D(Collider2D other)
+    public Shop shop;
+
+    private void OnMouseDown()
     {
-        if (other.CompareTag("Player"))
-        {
-           // shop.Openshop();
-        }
+        shop.OpenShop();
+        Debug.Log("yes we are openeing the shop");
     }
 }
