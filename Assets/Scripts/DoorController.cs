@@ -9,7 +9,7 @@ public class DoorController : MonoBehaviour
     public bool IsUnlocked { get; private set; }
     public bool isOnTrigger { get; private set; }
 
-    private Player player;
+    private GameObject player1;
 
     Vector2Int _cellA;
     Vector2Int _cellB;
@@ -26,7 +26,7 @@ public class DoorController : MonoBehaviour
     {
         if (collision.CompareTag("Player")){
             isOnTrigger = true;
-            player = collision.GetComponentInParent<Player>();
+            player1 = collision.gameObject;
         } 
     }
 
@@ -37,7 +37,7 @@ public class DoorController : MonoBehaviour
 
     private void OnMouseDown(){
         if(isOnTrigger){
-            Interact(player);
+            Interact(player1);
         }
     }
     // !!INCOMPLETE!!
