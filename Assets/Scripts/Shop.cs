@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class Shop : MonoBehaviour
 {
     public Player player;
     public GameObject UpgradesCanvas;
+    public TextMeshProUGUI upgradeStatusText;
+
 
     // IDEA: Disable buttons you cannot afford
 
@@ -15,6 +19,8 @@ public class Shop : MonoBehaviour
     public Text speedText;
     public Text vacuumText;
     public Text moneyText;
+
+
 
     [Header("Buttons")]
     public Button vacuumButton;
@@ -40,6 +46,7 @@ public class Shop : MonoBehaviour
     {
         UpgradesCanvas = GameObject.Find("UpgradesCanvas");
         UpgradesCanvas.SetActive(false);
+        UpdateUpgradeStatusUI();
 
         batteryText.text = GrowthFunc.Fibonacci(initBatteryCost).ToString();
         roomKeyText.text = GrowthFunc.Fibonacci(initRoomKeyCost).ToString();
@@ -59,6 +66,7 @@ public class Shop : MonoBehaviour
             player.u_batteries++;
             batteryText.text = GrowthFunc.Fibonacci(player.u_batteries + initBatteryCost).ToString();
         }
+        UpdateUpgradeStatusUI();
     }
     
     public void BuyRoomKey()
@@ -70,6 +78,7 @@ public class Shop : MonoBehaviour
             player.u_roomCount++;
             roomKeyText.text = GrowthFunc.Fibonacci(player.u_roomCount + initRoomKeyCost).ToString();
         }
+        UpdateUpgradeStatusUI();
     }
 
     // This ends the game. Not sure if you want it in the upgrade menu but if not then delete this ig
@@ -89,6 +98,7 @@ public class Shop : MonoBehaviour
             // walk over to the specific door.
             ovalOfficeKeyText.text = "N/A";
             ovalOfficeButton.interactable = false;
+            UpdateUpgradeStatusUI();
         }
     }
 
@@ -96,13 +106,13 @@ public class Shop : MonoBehaviour
     {
 
         int currCost = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost);
-        Debug.Log("Buying speed upgrade, cost = " + currCost);
 
         if (purchase(currCost))
         {
             player.scrap -= currCost;
             player.u_speed++;
             speedText.text = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost).ToString();
+            updateUpgradeStatusUI();
         }
     }
 
@@ -117,7 +127,10 @@ public class Shop : MonoBehaviour
             player.u_vacuumFilterUnlocked = true;
             vacuumText.text = "N/A";
             vacuumButton.interactable = false;
+            UpdateUpgradeStatusUI();
         }
+        UpdateUpgradeStatusUI();
+
     }
 
     public void buyMoneyUpgrade()
@@ -129,6 +142,7 @@ public class Shop : MonoBehaviour
             player.u_money++;
             moneyText.text = GrowthFunc.Fibonacci(player.u_money + initMoneyCost).ToString();
         }
+        UpdateUpgradeStatusUI();
     }
 
     public bool purchase(int cost)
@@ -140,17 +154,46 @@ public class Shop : MonoBehaviour
         player.scrap -= cost;
         player.handleUpgrade();
         return true;
+
     }
 
     public void OpenShop()
     {
+        Player.Instance.FreezeMovement();
         UpgradesCanvas.SetActive(true);
-
     }
         
         public void CloseShop()
     {
+        Player.Instance.UnfreezeMovement();
         UpgradesCanvas.SetActive(false);
+    }
+    private void UpdateUpgradeStatusUI()
+    {
+        string text = "";
+
+        if (player.u_batteries > 0)
+            text += "Battery: " + player.u_batteries + "\n";
+
+        if (player.u_roomCount > 0)
+            text += "Rooms: " + player.u_roomCount + "\n";
+
+        if (player.u_speed > 0)
+            text += "Speed: " + player.u_speed + "\n";
+
+        if (player.u_money > 0)
+            text += "Money: " + player.u_money + "\n";
+
+        if (player.u_vacuumFilterUnlocked)
+            text += "Vacuum: Unlocked\n";
+
+        if (player.u_ovalOfficeUnlocked)
+            text += "Oval Office: Unlocked\n";
+
+        if (text == "")
+            text = "No upgrades yet";
+
+        upgradeStatusText.text = text;
     }
 
 }
