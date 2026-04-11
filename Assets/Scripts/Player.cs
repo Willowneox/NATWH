@@ -58,9 +58,20 @@ public class Player : MonoBehaviour
         batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
         if (sr == null)
             sr = GetComponent<SpriteRenderer>();
+
+        if (animator == null)
+            animator = GetComponent<Animator>();
     }
     void FixedUpdate()
     {
+        if (batteryLeft < 0)
+        {
+            triggerNoChargeEnging();
+            return;
+        }
+
+        // decrement battery life
+        batteryLeft -= Time.fixedDeltaTime;
 
         if (Mouse.current.leftButton.isPressed)
         {
@@ -114,6 +125,11 @@ public class Player : MonoBehaviour
         {
             sr.flipX = lastMoveDirection.x < 0;
         }
+    }
+
+    private void triggerNoChargeEnging()
+    {
+        // game over screen
     }
 }
 

@@ -22,8 +22,9 @@ public class Shop : MonoBehaviour
      *      - Function to a new button
      *      - Upgrade cost text object its variable
      */
-    private void Start()
+    public void Start()
     {
+        BackgroundPanel = GameObject.Find("BackgroundPanel");
         UpgradesCanvas.SetActive(false);
     }
 
