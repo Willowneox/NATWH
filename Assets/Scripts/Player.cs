@@ -33,7 +33,8 @@ public class Player : MonoBehaviour
     public const float U_ROOMS_PER_UPGRADE = 1;
 
     // Oval office unlock is a 1 time purchase
-    public bool ovalOfficeUnlocked = false;
+    public bool u_ovalOfficeUnlocked = false;
+    public bool u_vacuumFilterUnlocked = false;
 
     // Speed upgrade
     public int u_speed = 0;

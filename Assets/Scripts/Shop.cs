@@ -10,6 +10,7 @@ public class Shop : MonoBehaviour
     public Text roomKeyText;
     public Text ovalOfficeKeyText;
     public Text speedText;
+    public Text vacuumText;
 
     /*
      *      For each upgrade, create a new public Text object for the cost
@@ -19,6 +20,7 @@ public class Shop : MonoBehaviour
      *      - Function to a new button
      *      - Upgrade cost text object its variable
      */
+
     public void BuyBattery()
     {
         // calculate cost of next battery from growth function
@@ -45,12 +47,14 @@ public class Shop : MonoBehaviour
     // This ends the game. Not sure if you want it in the upgrade menu but if not then delete this ig
     public void BuyOvalOfficeKey()
     {
+        if (player.u_ovalOfficeUnlocked) return; // already bought
+
         const int cost = 10000; // no growth function bc 1 time upgrade
 
         if (player.scrap < cost) return;
 
         player.scrap -= cost;
-        player.ovalOfficeUnlocked = true;
+        player.u_ovalOfficeUnlocked = true;
         // TODO: Either trigger end of game cutscene here OR grey out this upgrade and let the player
         // walk over to the specific door.
         ovalOfficeKeyText.text = "N/A";
@@ -67,4 +71,16 @@ public class Shop : MonoBehaviour
         speedText.text = GrowthFunc.Fibonacci(player.u_speed + 1).ToString();
     }
 
+    public void BuyVacuumFilter()
+    {
+        if (player.u_vacuumFilterUnlocked) return;
+
+        const int cost = 500; // no growth function bc 1 time upgrade
+
+        if (player.scrap < cost) return;
+        player.scrap -= cost;
+        player.u_vacuumFilterUnlocked = true;
+
+        vacuumText.text = "N/A";
+    }
 }
