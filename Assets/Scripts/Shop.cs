@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     public Player player;
+    public GameObject BackgroundPanel;
 
     [Header("Upgrade Cost Text")]
     public Text button_text;
@@ -26,5 +27,14 @@ public class Shop : MonoBehaviour
         player.scrap -= currCost;
         player.u_batteries++;
         button_text.text = GrowthFunc.Fibonacci(player.u_batteries + 1).ToString();
+    }
+    public void OpenShop()
+    {
+        BackgroundPanel.SetActive(true);
+
+    }
+    public void CloseShop()
+    {
+        BackgroundPanel.SetActive(false);
     }
 }

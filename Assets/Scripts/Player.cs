@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public Animator animator;
+
     [Header("Movement Settings")]
     public float playerAccel = 15f;
     public float speedCap = 8f;
@@ -26,6 +28,8 @@ public class Player : MonoBehaviour
     public const float B_BATTERY = 20f;
     public const float U_BONUS_CHARGE_PER_BATTERY = 5f;
 
+    private Vector2 lastMoveDirection = Vector2.down;
+
 
     private void Start()
     {
@@ -44,6 +48,7 @@ public class Player : MonoBehaviour
         {
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, friction * Time.fixedDeltaTime);
         }
+        UpdateAnimation();
     }
 
     private void Move()
@@ -53,11 +58,26 @@ public class Player : MonoBehaviour
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         Vector2 direction = (mouseWorldPos - (Vector2)transform.position).normalized;
 
+        //tell the direction
+        if (direction.sqrMagnitude > 0.01f)
+        {
+            lastMoveDirection = direction;
+        }
+
         // accelerate
         rb.AddForce(direction * playerAccel, ForceMode2D.Force);
 
         // clamp to speed cap
         if (rb.linearVelocity.magnitude > speedCap)
             rb.linearVelocity = rb.linearVelocity.normalized * speedCap;
+    }
+    //animation
+    private void UpdateAnimation()
+    {
+        bool isMoving = rb.linearVelocity.magnitude > 0.1f;
+        bool isFacingBack = lastMoveDirection.y > 0f;
+
+        animator.SetBool("isMoving", isMoving);
+        animator.SetBool("isFacingBack", isFacingBack);
     }
 }
