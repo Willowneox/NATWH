@@ -39,5 +39,16 @@ public class Shop : MonoBehaviour
         button_text.text = GrowthFunc.Fibonacci(player.u_roomCount + 1).ToString();
     }
 
+    // This ends the game. Not sure if you want it in the upgrade menu but if not then delete this ig
+    public void BuyOvalOfficeKey()
+    {
+        const int cost = 10000; // no growth function bc 1 time upgrade
 
+        if (player.scrap < cost) return;
+
+        player.scrap -= cost;
+        player.ovalOfficeUnlocked = true;
+        // TODO: Either trigger end of game cutscene here OR grey out this upgrade and let the player
+        // walk over to the specific door.
+    }
 }

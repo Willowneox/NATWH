@@ -31,6 +31,9 @@ public class Player : MonoBehaviour
     public const float B_ROOM_COUNT = 1;
     public const float U_ROOMS_PER_UPGRADE = 1;
 
+    // Oval office unlock is a 1 time purchase
+    public bool ovalOfficeUnlocked = false;
+
     private void Start()
     {
         rb.gravityScale = 0f;
