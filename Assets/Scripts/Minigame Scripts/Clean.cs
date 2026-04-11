@@ -16,6 +16,7 @@ public class Clean : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     private void Start()
     {
+        _canvas = GetComponentInParent<Canvas>();
         CreateTexture();
     }
 

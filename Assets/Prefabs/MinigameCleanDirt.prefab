@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5338699999012895601}
   - component: {fileID: 749874576839190736}
   m_Layer: 5
-  m_Name: Minigame_CleanDirt
+  m_Name: MinigameCleanDirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

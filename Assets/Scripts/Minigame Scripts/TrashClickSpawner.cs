@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MinigameTrash : MonoBehaviour
+public class TrashClickSpawner : MonoBehaviour
 {
     public GameObject trashPrefab;
 
