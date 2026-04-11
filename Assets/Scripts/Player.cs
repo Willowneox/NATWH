@@ -109,12 +109,12 @@ public class Player : MonoBehaviour
             lastMoveDirection = direction;
         }
 
-        // accelerate
-        rb.AddForce(direction * playerAccel, ForceMode2D.Force);
-
         // clamp to speed cap
         if (rb.linearVelocity.magnitude > speedCap)
             rb.linearVelocity = rb.linearVelocity.normalized * speedCap;
+
+        // accelerate
+        rb.AddForce(direction * playerAccel, ForceMode2D.Force);
     }
 
     // Called whenever an upgrade is purchased. Recalculates all stats.
@@ -150,6 +150,7 @@ public class Player : MonoBehaviour
     }
     private void triggerNoChargeEnging()
     {
+        FreezeMovement();
         // game over screen
     }
 }
