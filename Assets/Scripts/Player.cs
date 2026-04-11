@@ -5,7 +5,8 @@ public class Player : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float playerAccel = 15f;
-    public float speedCap = 8f;
+    public const float INIT_SPEED_CAP = 8f;
+    public float speedCap = INIT_SPEED_CAP;
     public float friction = 3f;
 
     [Header("Rigidbody2D")]
@@ -33,6 +34,13 @@ public class Player : MonoBehaviour
 
     // Oval office unlock is a 1 time purchase
     public bool ovalOfficeUnlocked = false;
+
+    // Speed upgrade
+    public int u_speed = 0;
+    public const float B_SPEED = INIT_SPEED_CAP;
+    public const float U_SPEED_PER_UPGRADE = 4f; // Might need to play with this number.
+
+    // Scrap earning upgrade...
 
     private void Start()
     {
