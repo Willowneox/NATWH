@@ -112,7 +112,7 @@ public class Shop : MonoBehaviour
             player.scrap -= currCost;
             player.u_speed++;
             speedText.text = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost).ToString();
-            updateUpgradeStatusUI();
+            UpdateUpgradeStatusUI();
         }
     }
 
