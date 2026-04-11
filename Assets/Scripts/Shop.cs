@@ -104,14 +104,16 @@ public class Shop : MonoBehaviour
 
     public void BuySpeed()
     {
+
         int currCost = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost);
 
-        if (player.scrap < currCost) return;
-
-        player.scrap -= currCost;
-        player.u_speed++;
-        speedText.text = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost).ToString();
-        UpdateUpgradeStatusUI();
+        if (purchase(currCost))
+        {
+            player.scrap -= currCost;
+            player.u_speed++;
+            speedText.text = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost).ToString();
+            UpdateUpgradeStatusUI();
+        }
     }
 
     public void BuyVacuumFilter()
@@ -147,7 +149,8 @@ public class Shop : MonoBehaviour
     {
                
         if (player.scrap < cost) return false;
-        
+
+        Debug.Log("Purchase successful!");
         player.scrap -= cost;
         player.handleUpgrade();
         return true;
