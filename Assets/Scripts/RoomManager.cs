@@ -5,7 +5,7 @@ public class RoomManager : MonoBehaviour
 {
     public static RoomManager Instance { get; private set; }
 
-    [SerializeField] private GameObject _roomPrefab;
+    [SerializeField] private List<GameObject> _roomPrefab;
     [SerializeField] private float _roomWidth = 20f;
     [SerializeField] private float _roomHeight = 20f;
 
@@ -39,7 +39,10 @@ public class RoomManager : MonoBehaviour
         }
 
         Vector3 newPos = ownerRoom.transform.position + DirectionToWorld(door.direction);
-        Room newRoom = Instantiate(_roomPrefab, newPos, Quaternion.identity)
+
+        int randIndex = Random.Range(0, 2);
+
+        Room newRoom = Instantiate(_roomPrefab[randIndex], newPos, Quaternion.identity)
             .GetComponent<Room>();
 
         _spawnedRooms[newCoord] = newRoom;
