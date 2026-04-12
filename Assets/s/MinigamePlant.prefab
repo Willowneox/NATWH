@@ -528,6 +528,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlantMiniGame
   prefab: {fileID: 5131653601854826683, guid: f49c59fb0255c4bc0ad2a12d563c18d5, type: 3}
+  _cutSounds:
+  - {fileID: 8300000, guid: e08a14c7100f7764b96587c3914d6da6, type: 3}
+  - {fileID: 8300000, guid: 8d777be65fe78b04f897abdb0683d8af, type: 3}
+  - {fileID: 8300000, guid: 7c87680bd0b891241966de92a99a5ec7, type: 3}
+  _cutSoundVolume: 1
 --- !u!212 &6995669614867201028
 SpriteRenderer:
   serializedVersion: 2
