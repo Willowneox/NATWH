@@ -2,8 +2,10 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - ChargingPoint
+  - Blade
   layers:
   - Default
   - TransparentFX
@@ -12,8 +14,8 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
+  - TrashSpawnZone
+  - trailOverlay
   - 
   - 
   - 
@@ -41,3 +43,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2217159947
+    locked: 0
+  - name: TrashPile
+    uniqueID: 1613915279
+    locked: 0
+  - name: Player
+    uniqueID: 3842680145
+    locked: 0
+  - name: Doorframe
+    uniqueID: 891821239
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  m_MigratedRenderPipelines: []

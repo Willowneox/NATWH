@@ -1,0 +1,962 @@
+fileFormatVersion: 2
+guid: 42ca41d223e15884598b944e2503c946
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1459998344874016079
+    second: Peter_0
+  - first:
+      213: -6232589645822715639
+    second: Peter_1
+  - first:
+      213: 4550627835477143513
+    second: Peter_2
+  - first:
+      213: 9055947996019094127
+    second: Peter_3
+  - first:
+      213: 7564038446235693080
+    second: Peter_4
+  - first:
+      213: -8634049603949369396
+    second: Peter_5
+  - first:
+      213: -6836144711848730667
+    second: Peter_6
+  - first:
+      213: 6712580187320135402
+    second: Peter_7
+  - first:
+      213: -4971981477758886698
+    second: Peter_8
+  - first:
+      213: 7472688865311329306
+    second: Peter_9
+  - first:
+      213: -5501703592838658323
+    second: Peter_10
+  - first:
+      213: -5854307045260986924
+    second: Peter_11
+  - first:
+      213: -6641262584719622567
+    second: Peter_12
+  - first:
+      213: 8573256701319396399
+    second: Peter_13
+  - first:
+      213: 6091130419902186657
+    second: Peter_14
+  - first:
+      213: 1065429289537409643
+    second: Peter_15
+  - first:
+      213: -5106256130625320584
+    second: Peter_16
+  - first:
+      213: -3099484165830468980
+    second: Peter_17
+  - first:
+      213: 6152683042815262371
+    second: Peter_18
+  - first:
+      213: 5063841647438393584
+    second: Peter_19
+  - first:
+      213: 3725884434717399813
+    second: Peter_20
+  - first:
+      213: -8484470349769405858
+    second: Peter_21
+  - first:
+      213: -737025761122267706
+    second: Peter_22
+  - first:
+      213: -6467817809583272242
+    second: Peter_23
+  - first:
+      213: 4891447095354959359
+    second: Peter_24
+  - first:
+      213: 8453930580236249781
+    second: Peter_25
+  - first:
+      213: -5889685160504440771
+    second: Peter_26
+  - first:
+      213: 8020427305156579121
+    second: Peter_27
+  - first:
+      213: 4449693470649669643
+    second: Peter_28
+  - first:
+      213: 6470474250629746436
+    second: Peter_29
+  - first:
+      213: 4365510805623305943
+    second: Peter_30
+  - first:
+      213: 297132011463346015
+    second: Peter_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Peter_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1
+        height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b24021ad3b0dbbe0800000000000000
+      internalID: -1459998344874016079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_1
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1385
+        width: 57
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90995f12db46189a0800000000000000
+      internalID: -6232589645822715639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_2
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 1385
+        width: 24
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dfae96f7e3172f30800000000000000
+      internalID: 4550627835477143513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_3
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1374
+        width: 68
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f62f02fc8b03dad70800000000000000
+      internalID: 9055947996019094127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_walk_1
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 1352
+        width: 332
+        height: 222
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 810b64f04ecd8f860800000000000000
+      internalID: 7564038446235693080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_walk_2
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 1359
+        width: 332
+        height: 233
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc7ee7f51a1bd2880800000000000000
+      internalID: -8634049603949369396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1099
+        width: 46
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5df5711aa922121a0800000000000000
+      internalID: -6836144711848730667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_7
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1088
+        width: 68
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeeaa879d10e72d50800000000000000
+      internalID: 6712580187320135402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_8
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 1077
+        width: 24
+        height: 145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dc1c5c4039fffab0800000000000000
+      internalID: -4971981477758886698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_9
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 1088
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1c06e55ee254b760800000000000000
+      internalID: 7472688865311329306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_idle_1
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 1055
+        width: 332
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de68c594bb506a3b0800000000000000
+      internalID: -5501703592838658323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_idle_2
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 1055
+        width: 332
+        height: 233
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d5f62182c251cea0800000000000000
+      internalID: -5854307045260986924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_idle_3
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 1055
+        width: 332
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95eb1b9bdde75d3a0800000000000000
+      internalID: -6641262584719622567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_idle_4
+      rect:
+        serializedVersion: 2
+        x: 1662
+        y: 1057
+        width: 332
+        height: 255
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2c316afb835af670800000000000000
+      internalID: 8573256701319396399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 824
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a488de38da088450800000000000000
+      internalID: 6091130419902186657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_15
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 824
+        width: 35
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b629c204b4a29ce00800000000000000
+      internalID: 1065429289537409643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_16
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 824
+        width: 57
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 879cae17a1fe229b0800000000000000
+      internalID: -5106256130625320584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_idle_back_1
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 736
+        width: 332
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8a1abca29b6cf4d0800000000000000
+      internalID: -3099484165830468980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_idle_back_2
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 736
+        width: 332
+        height: 233
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3aeb29e01a8b26550800000000000000
+      internalID: 6152683042815262371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_idle_back_3
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 736
+        width: 332
+        height: 255
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f0f4622621664640800000000000000
+      internalID: 5063841647438393584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_20
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 736
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50bdc7d172005b330800000000000000
+      internalID: 3725884434717399813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_21
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 736
+        width: 57
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5a09a66b2b114a80800000000000000
+      internalID: -8484470349769405858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_22
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 736
+        width: 101
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cdcef5a9fe85c5f0800000000000000
+      internalID: -737025761122267706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_23
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 516
+        width: 90
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ece08db58f1bd36a0800000000000000
+      internalID: -6467817809583272242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_24
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 516
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff5af3c9739e1e340800000000000000
+      internalID: 4891447095354959359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_25
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 516
+        width: 24
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ba2bc66215625570800000000000000
+      internalID: 8453930580236249781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_26
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 538
+        width: 57
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d384e392d82a34ea0800000000000000
+      internalID: -5889685160504440771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_walk_back_1
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 428
+        width: 332
+        height: 222
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13f83b6d3284e4f60800000000000000
+      internalID: 8020427305156579121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_walk_back_2
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 428
+        width: 332
+        height: 233
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b08d275d2ac70cd30800000000000000
+      internalID: 4449693470649669643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_29
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 428
+        width: 57
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40f09158c0ebbc950800000000000000
+      internalID: 6470474250629746436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_30
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 439
+        width: 57
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d67e40c2f8659c30800000000000000
+      internalID: 4365510805623305943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Peter_31
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 439
+        width: 101
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f578baa7dff9f1400800000000000000
+      internalID: 297132011463346015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a632b0c1b7d8200459a1366104cf2c6c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Peter_0: -1459998344874016079
+      Peter_1: -6232589645822715639
+      Peter_14: 6091130419902186657
+      Peter_15: 1065429289537409643
+      Peter_16: -5106256130625320584
+      Peter_2: 4550627835477143513
+      Peter_20: 3725884434717399813
+      Peter_21: -8484470349769405858
+      Peter_22: -737025761122267706
+      Peter_23: -6467817809583272242
+      Peter_24: 4891447095354959359
+      Peter_25: 8453930580236249781
+      Peter_26: -5889685160504440771
+      Peter_29: 6470474250629746436
+      Peter_3: 9055947996019094127
+      Peter_30: 4365510805623305943
+      Peter_31: 297132011463346015
+      Peter_6: -6836144711848730667
+      Peter_7: 6712580187320135402
+      Peter_8: -4971981477758886698
+      Peter_9: 7472688865311329306
+      Peter_idle_1: -5501703592838658323
+      Peter_idle_2: -5854307045260986924
+      Peter_idle_3: -6641262584719622567
+      Peter_idle_4: 8573256701319396399
+      Peter_idle_back_1: -3099484165830468980
+      Peter_idle_back_2: 6152683042815262371
+      Peter_idle_back_3: 5063841647438393584
+      Peter_walk_1: 7564038446235693080
+      Peter_walk_2: -8634049603949369396
+      Peter_walk_back_1: 8020427305156579121
+      Peter_walk_back_2: 4449693470649669643
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

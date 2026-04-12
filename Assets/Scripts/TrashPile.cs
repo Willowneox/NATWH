@@ -1,49 +1,54 @@
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class TrashPile : MonoBehaviour
 {
-    public int TrashID { get; private set; }
+    [SerializeField] private Sprite _trashSprite;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private GameObject _minigamePrefab;
+    [SerializeField] private AudioClip _cleanCompleteSound;
+    [SerializeField] private float _cleanSoundVolume = 100f;
 
-    public UnityEvent<int> OnCleaned;
+    public bool isOnTrigger { get; private set; } = false;
+    public bool isCleaned = false;
 
-    bool _isCleaned = false;
-    bool _inMinigame = false;
-
-    public void Initialize(int id)
+    private void Awake()
     {
-        TrashID = id;
-        _isCleaned = false;
-        _inMinigame = false;
-        gameObject.SetActive(true);
+        _spriteRenderer.sprite = _trashSprite;
     }
 
-    public void Interact()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_isCleaned || _inMinigame) return;
-        _inMinigame = true;
-        
-
-        // RUN A MINIGAME FROM HERE (idk the implementation yet)
+        if (collision.CompareTag("Player")) isOnTrigger = true;
     }
 
-    // Minigame should call this function
-    // If game was won ->                     OnMinigameWin(true)
-    // If game was lost or Ui was exited ->   OnMinigame(false)
-    public void OnMinigameWin(bool success)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        _inMinigame = false;
-
-        if (success) Clean();
+        if (collision.CompareTag("Player")) isOnTrigger = false;
     }
 
-    public void Clean()
+    private void OnMouseDown()
     {
-        _isCleaned = true;
+        if (isOnTrigger && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            MinigameSpawner.Instance.OnMinigameComplete += OnMinigameComplete;
+            MinigameSpawner.Instance.StartMinigame(_minigamePrefab);
+        }
+    }
 
-        // vfx or animation of trash disappearing
+    private void OnMinigameComplete()
+    {
+        isCleaned = true;
+        Unsubscribe();
 
-        OnCleaned?.Invoke(TrashID);
-        gameObject.SetActive(false);
+        if (_cleanCompleteSound != null)
+            AudioSource.PlayClipAtPoint(_cleanCompleteSound, transform.position, _cleanSoundVolume);
+
+        Destroy(gameObject);
+    }
+
+    private void Unsubscribe()
+    {
+        MinigameSpawner.Instance.OnMinigameComplete -= OnMinigameComplete;
     }
 }

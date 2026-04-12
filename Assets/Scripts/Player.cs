@@ -1,52 +1,125 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public Animator animator;
+    //public Animator fade;
+    public SpriteRenderer sr;
+    public Color flashColor = Color.red;
+    public float duration = 0.1f;
+    public GameObject FadeOut;
+    public GameObject RestartPanel;
+    public GameObject restartButton;
+
     [Header("Movement Settings")]
     public float playerAccel = 15f;
-    public float speedCap = 8f;
+    public const float INIT_SPEED_CAP = 8f;
+    public float speedCap = INIT_SPEED_CAP;
     public float friction = 3f;
+    public bool canMove = true;
 
     [Header("Rigidbody2D")]
     public Rigidbody2D rb;
 
     [Header("Battery Life")]
     public float batteryLeft;
+    public bool inShop = false;
 
     [Header("Scrap Count")]
     public int scrap = 0;
+
+    [Header("Keys Count")]
+    public int keyCount = 0;
+    public int keysPurchased = 0;
 
     [Header("Upgrades")]
     // add u_ before these variables, to make the code easier to read
 
     // each upgrade needs a base value, number of upgrades, and benefit per upgrade
     // ex: battery has a base value of 20, u_batteries to track num of battery upgrades owned, and BONUS_CHARGE_PER_BATTERY
+    [Header("Batteries")]
     public int u_batteries = 0;
-    public const float B_BATTERY = 20f;
-    public const float U_BONUS_CHARGE_PER_BATTERY = 5f;
+    [SerializeField] private float B_BATTERY = 20f;
+    [SerializeField] private float U_BONUS_CHARGE_PER_BATTERY = 5f;
+    public float batteryCapacity;
 
-    // Start with 1 room, each key opens 1 more. Am I doing this right??
-    public int u_roomCount = 0;
-    public const float B_ROOM_COUNT = 1;
-    public const float U_ROOMS_PER_UPGRADE = 1;
+    // Oval office unlock is a 1 time purchase
+    [Header("Presidents' Key")]
+    public bool u_ovalOfficeUnlocked = false;
+    public bool u_vacuumFilterUnlocked = false;
+
+    // Speed upgrade
+    [Header("Speed")]
+    public int u_speed = 0;
+    [SerializeField] private float B_SPEED = INIT_SPEED_CAP;
+    [SerializeField] private float U_SPEED_PER_UPGRADE = 4f; // Might need to play with this number.
+
+    // Scrap earning upgrade...
+    [Header("Increased Scrap Value")]
+    public int u_money = 0;
+    public int B_SCRAP_EARNED = 1; // unused
+    public int U_SCRAP_EARNED_PER_UPGRADE = 2; // Maybe consider using a growth function for these? idk
+
+    private Vector2 lastMoveDirection = Vector2.down;
+    private bool isDead = false;
+    public static Player Instance;
 
     private void Start()
     {
-        rb.gravityScale = 0f;
+        if (RestartPanel != null)
+            RestartPanel.SetActive(false);
+    }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
 
-        batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
+            rb.gravityScale = 0f;
+
+        speedCap = B_SPEED;
+
+        batteryCapacity = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
+        batteryLeft = batteryCapacity;
+        if (sr == null)
+            sr = GetComponent<SpriteRenderer>();
+
+        if (animator == null)
+            animator = GetComponent<Animator>();
     }
     void FixedUpdate()
     {
+        if (batteryLeft <= 0 && !isDead)
+        {
+            isDead = true;
+            triggerNoChargeEnding();
+            return;
+        }
 
-        if (Mouse.current.leftButton.isPressed)
+        // decrement battery life
+        batteryLeft -= Time.fixedDeltaTime;
+
+        if (Mouse.current.leftButton.isPressed && canMove)
         {
             Move();
         }
         else
         {
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, friction * Time.fixedDeltaTime);
+        }
+        UpdateAnimation();
+
+        if(inShop)
+        {
+            batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
         }
     }
 
@@ -57,11 +130,89 @@ public class Player : MonoBehaviour
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         Vector2 direction = (mouseWorldPos - (Vector2)transform.position).normalized;
 
-        // accelerate
-        rb.AddForce(direction * playerAccel, ForceMode2D.Force);
+        //tell the direction
+        if (direction.sqrMagnitude > 0.01f)
+        {
+            lastMoveDirection = direction;
+        }
 
         // clamp to speed cap
         if (rb.linearVelocity.magnitude > speedCap)
             rb.linearVelocity = rb.linearVelocity.normalized * speedCap;
+
+        // accelerate
+        rb.AddForce(direction * playerAccel, ForceMode2D.Force);
     }
-}
+
+    // Called whenever an upgrade is purchased. Recalculates all stats. All 1 that is.
+    public void handleUpgrade()
+    {
+        // battery life is taken care of in the start func, oval offic and vac are bools, scrap earned might depend on implementation of minigames
+        // so this only touches speed for now.
+        // Debug.Log("Handling speed upgrade.");
+        speedCap = B_SPEED + u_speed * U_SPEED_PER_UPGRADE;
+    }
+    
+    // animation
+    private void UpdateAnimation()
+    {
+        bool isMoving = rb.linearVelocity.magnitude > 0.1f;
+        bool isFacingBack = lastMoveDirection.y > 0f;
+
+        animator.SetBool("isMoving", isMoving);
+        animator.SetBool("isFacingBack", isFacingBack);
+        if (lastMoveDirection.x != 0)
+        {
+            sr.flipX = lastMoveDirection.x < 0;
+        }
+    }
+
+    public void UseKey()
+    {
+        keyCount--;
+    }
+   
+    public void FreezeMovement()
+    {
+        canMove = false;
+        rb.linearVelocity = new Vector2(0, 0);
+    }
+    
+    public void UnfreezeMovement()
+    {
+        canMove = true;
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Scene1");
+    }
+
+    private void triggerNoChargeEnding()
+    {
+        FreezeMovement();
+
+        if (FadeOut != null)
+            FadeOut.SetActive(true);
+
+        if (RestartPanel != null)
+            RestartPanel.SetActive(true);
+
+    }
+
+    public void dmg(float damage)
+    {
+        batteryLeft -= damage;
+        StartCoroutine(FlashRoutine());
+        Debug.Log("dmg");
+    }
+
+    private IEnumerator FlashRoutine()
+    {
+        sr.color = flashColor;
+        yield return new WaitForSeconds(duration);
+        sr.color = Color.white;
+        Debug.Log("flash");
+    }
+}   
+
+
