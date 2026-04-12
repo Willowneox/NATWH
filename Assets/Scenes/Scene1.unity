@@ -6531,9 +6531,8 @@ MonoBehaviour:
   _doorWest: {fileID: 735874080}
   _trashContainer: {fileID: 1302009860}
   _trashSpawnArea: {fileID: 2062388861}
-  _trashPrefab: {fileID: 4602366844252870985, guid: c42ff3372e2925a4daaec63404531600, type: 3}
   _ObsPrefab: {fileID: 6707453707204714105, guid: e48a0aebb9afd4ae7a0c47a09e3ef2cd, type: 3}
-  _PropPrefab: {fileID: 0}
+  _PropPrefab: {fileID: 6707453707204714105, guid: 1c42ba301df2ac440b3e844d1a3b1df1, type: 3}
   _minTrash: 3
   _minObs: 0
   _maxObs: 0
