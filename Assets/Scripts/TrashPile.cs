@@ -7,7 +7,7 @@ public class TrashPile : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private GameObject _minigamePrefab;
     [SerializeField] private AudioClip _cleanCompleteSound;
-    [SerializeField] private float _cleanSoundVolume = 11f;
+    [SerializeField] private float _cleanSoundVolume = 100f;
 
     public bool isOnTrigger { get; private set; } = false;
     public bool isCleaned = false;
