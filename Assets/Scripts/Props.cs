@@ -11,13 +11,14 @@ public class Props : Obstacle
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = availableSprites[Random.Range(0, availableSprites.Length)];
         polygonCollider = GetComponent<PolygonCollider2D>();
-        SyncCollider();
 
         int dir = Random.Range(1, 3);
         if (dir == 2)
         {
             spriteRenderer.flipX = true;
         }
+
+        SyncCollider();
     }
 
     // Update is called once per frame
