@@ -114,7 +114,6 @@
             int currCost = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost);
             if (purchase(currCost))
             {
-                player.scrap -= currCost;
                 player.u_speed++;
                 speedText.text = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost).ToString();
                 UpdateUpgradeStatusUI();

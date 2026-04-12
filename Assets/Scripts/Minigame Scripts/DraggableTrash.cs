@@ -15,7 +15,7 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public List<Sprite> trashSprites;
 
-    private const float ScaleFactor = 3f;
+    private const float ScaleFactor = 2f;
 
     [SerializeField] DropZone dropZone;
 
