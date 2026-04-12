@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1278807629029808494}
   - component: {fileID: 1888678223744724812}
   - component: {fileID: 1576432501380271162}
+  - component: {fileID: 6625049233020588440}
   m_Layer: 5
   m_Name: Trash_click
   m_TagString: Untagged
@@ -36,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1278807629029808494
 CanvasRenderer:
@@ -120,3 +121,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6625049233020588440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725782300497516690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30846c59b84cda64f88dca2dd92534b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteRandomizer
+  sprite: {fileID: 1888678223744724812}
+  trashSprites:
+  - {fileID: 2020338458553831332, guid: 7ad6aab03efc1cb4b840b6b5333f9347, type: 3}
+  - {fileID: -5390857034651934961, guid: 7ad6aab03efc1cb4b840b6b5333f9347, type: 3}
+  - {fileID: -5839461877059605967, guid: 7ad6aab03efc1cb4b840b6b5333f9347, type: 3}
+  - {fileID: 733223811846877563, guid: 7ad6aab03efc1cb4b840b6b5333f9347, type: 3}
+  - {fileID: 5297603362540929479, guid: 7ad6aab03efc1cb4b840b6b5333f9347, type: 3}
+  rt: {fileID: 8124878423841434077}
