@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 201461485}
   - component: {fileID: 201461484}
   m_Layer: 5
-  m_Name: Cost
+  m_Name: SpeedCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 271946032}
   - component: {fileID: 271946031}
   m_Layer: 5
-  m_Name: Cost
+  m_Name: VacCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 300387307}
   - component: {fileID: 300387308}
   m_Layer: 5
-  m_Name: Cost
+  m_Name: RoomCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -954,7 +954,7 @@ GameObject:
   - component: {fileID: 545208956}
   - component: {fileID: 545208955}
   m_Layer: 5
-  m_Name: Money Bonus
+  m_Name: Efficiency Bonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2424,7 +2424,7 @@ GameObject:
   - component: {fileID: 840619946}
   - component: {fileID: 840619945}
   m_Layer: 5
-  m_Name: Cost
+  m_Name: BatteryCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3572,18 +3572,18 @@ MonoBehaviour:
   player: {fileID: 951248181}
   UpgradesCanvas: {fileID: 1464237681}
   upgradeStatusText: {fileID: 1523053430}
-  batteryText: {fileID: 271946031}
-  roomKeyText: {fileID: 2127080468}
-  ovalOfficeKeyText: {fileID: 300387308}
-  speedText: {fileID: 840619945}
-  vacuumText: {fileID: 2058531311}
-  moneyText: {fileID: 201461484}
+  batteryText: {fileID: 840619945}
+  roomKeyText: {fileID: 300387308}
+  ovalOfficeKeyText: {fileID: 2127080468}
+  speedText: {fileID: 201461484}
+  vacuumText: {fileID: 271946031}
+  moneyText: {fileID: 2058531311}
   vacuumButton: {fileID: 681472855}
   ovalOfficeButton: {fileID: 712245908}
-  initBatteryCost: 3
+  initBatteryCost: 4
   initRoomKeyCost: 1
-  initSpeedCost: 3
-  initMoneyCost: 8
+  initSpeedCost: 4
+  initMoneyCost: 9
   initVacuumCost: 500
   ovalOfficeCost: 10000
 --- !u!4 &1336744289
@@ -5417,7 +5417,7 @@ GameObject:
   - component: {fileID: 2058531312}
   - component: {fileID: 2058531311}
   m_Layer: 5
-  m_Name: Cost
+  m_Name: EfficiencyCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5616,7 +5616,7 @@ GameObject:
   - component: {fileID: 2127080467}
   - component: {fileID: 2127080468}
   m_Layer: 5
-  m_Name: Cost
+  m_Name: OvalCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

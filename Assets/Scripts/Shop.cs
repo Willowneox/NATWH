@@ -20,8 +20,6 @@ public class Shop : MonoBehaviour
     public Text vacuumText;
     public Text moneyText;
 
-
-
     [Header("Buttons")]
     public Button vacuumButton;
     public Button ovalOfficeButton;
