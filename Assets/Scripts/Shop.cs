@@ -114,7 +114,6 @@
             int currCost = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost);
             if (purchase(currCost))
             {
-                player.scrap -= currCost;
                 player.u_speed++;
                 speedText.text = GrowthFunc.Fibonacci(player.u_speed + initSpeedCost).ToString();
                 UpdateUpgradeStatusUI();
@@ -127,6 +126,7 @@
             if (purchase(initVacuumCost))
             {
                 player.u_vacuumFilterUnlocked = true;
+                player.friction = 4;
                 vacuumText.text = "N/A";
                 vacuumButton.interactable = false;
                 UpdateUpgradeStatusUI();
@@ -238,9 +238,8 @@
             if (player.keysPurchased > 0) text += "Keys: " + player.keyCount + "\n";
             if (player.u_speed > 0) text += "Speed: " + player.u_speed + "\n";
             if (player.u_money > 0) text += "Efficiency Upgrades: " + player.u_money + "\n";
-            if (player.u_vacuumFilterUnlocked) text += "Vacuum: Unlocked\n";
+            if (player.u_vacuumFilterUnlocked) text += "Stickier Bristles Unlocked\n";
             if (player.u_ovalOfficeUnlocked) text += "Oval Office: Unlocked\n";
-            if (text == "") text = "No upgrades yet";
             upgradeStatusText.text = text;
         }
 
