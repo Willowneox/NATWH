@@ -13,7 +13,9 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     private TrashDragSpawner spawner;
     [SerializeField] private Image sprite;
     public List<Sprite> trashSprites;
-    private const float ScaleFactor = 3f;
+
+    private const float ScaleFactor = 2f;
+
     [SerializeField] DropZone dropZone;
     private Vector3 originalScale;
     public float enlargeFactor = 1.1f;

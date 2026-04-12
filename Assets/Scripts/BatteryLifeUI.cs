@@ -20,11 +20,11 @@ public class BatteryLifeUI : MonoBehaviour
         float chunkSize = p.batteryCapacity / 6f;
         float positionInChunk = p.batteryLeft % chunkSize;
         float percentInChunk = positionInChunk / chunkSize;
-        bool shouldBlink = percentInChunk < 0.4f;
+        bool shouldBlink = (percentInChunk < 0.5f && p.batteryLeft < chunkSize * 2);
 
         if (shouldBlink)
         {
-            float alpha = (Mathf.Sin(Time.time * blinkSpeed) + 1f) / 2f;
+            float alpha = Mathf.Max((Mathf.Sin(Time.time * blinkSpeed) + 1f) / 2f, 0.55f);
             image.color = new Color(1f, 1f, 1f, alpha);
         }
         else
@@ -37,6 +37,7 @@ public class BatteryLifeUI : MonoBehaviour
         else if (p.batteryLeft >= chunkSize * 3) image.sprite = batterySprite[2];
         else if (p.batteryLeft >= chunkSize * 2) image.sprite = batterySprite[3];
         else if (p.batteryLeft >= chunkSize) image.sprite = batterySprite[4];
-        else image.sprite = batterySprite[5];
+        else if (p.batteryLeft > 0) image.sprite = batterySprite[5];
+        else image.color = new Color(1f, 1f, 1f, 0);
     }
 }
