@@ -1109,7 +1109,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MinigameSpawner
   minigamePrefabs:
+  - {fileID: 6581490929458787827, guid: 85f078e41266b7f4faafff9e36c8a556, type: 3}
   - {fileID: 8388667041403032907, guid: 2dea068dd9d950c4b82e2d94f1e6244a, type: 3}
+  - {fileID: 4967120258365943977, guid: 9dd2ad789e8289e4097d2bf8d909838c, type: 3}
+  - {fileID: 7439980183778967716, guid: 447a74f79ff6b4369b0a06d37c200f3c, type: 3}
 --- !u!114 &573905796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3678,11 +3681,11 @@ MonoBehaviour:
   purchaseSuccessSound: {fileID: 8300000, guid: 85d3b9185eb59e2498de98748f572e12, type: 3}
   purchaseFailSound: {fileID: 8300000, guid: c06380e4482f83746bdcb5b992382263, type: 3}
   postProcessVolume: {fileID: 1185158694}
+  upgradesCanvasGroup: {fileID: 0}
   focusDistanceBlurred: 0.1
   focusDistanceNormal: 2.82
-  focusTransitionDuration: 0.2
+  focusTransitionDuration: 1.5
   lensDistortionOpen: 0.76
-  menuFadeDuration: 0.4
   lensDistortionClose: 0.35
   batteryText: {fileID: 840619945}
   roomKeyText: {fileID: 300387308}
@@ -4140,7 +4143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1477463411
@@ -4800,10 +4803,7 @@ MonoBehaviour:
   _trashContainer: {fileID: 1302009860}
   _trashSpawnArea: {fileID: 2062388861}
   _trashPrefab: {fileID: 4602366844252870985, guid: c42ff3372e2925a4daaec63404531600, type: 3}
-  _ObsPrefab: {fileID: 0}
   _minTrash: 2
-  _minObs: 3
-  _maxObs: 8
   _maxTrash: 2
   _trashCheckRadius: 0.5
   _maxPlacementAttempts: 10
