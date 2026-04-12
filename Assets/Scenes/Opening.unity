@@ -476,7 +476,7 @@ MonoBehaviour:
   - {fileID: 4130640169021434097, guid: 552469a0c3929497a8da05fc292c2940, type: 3}
   - {fileID: 3465286685962602723, guid: ea4472b29e32b42bf9c1f5a9a1189616, type: 3}
   - {fileID: 7028616704906629411, guid: 014fc0ada75df43bb938178e14dd6c3f, type: 3}
-  fps: 1
+  fps: 0.7
   displayImage: {fileID: 1922486821}
 --- !u!4 &880155406
 Transform:
@@ -520,7 +520,7 @@ RectTransform:
   m_GameObject: {fileID: 1922486819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 19.5, y: 19.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 452119894}
@@ -528,7 +528,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -6.140442, y: -29.253723}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1922486821
 MonoBehaviour:
