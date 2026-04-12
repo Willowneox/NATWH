@@ -98,7 +98,7 @@ public class Shop : MonoBehaviour
             player.u_ovalOfficeUnlocked = true;
             // Disable button
 
-
+            
             // TODO: Either trigger end of game cutscene here OR grey out this upgrade and let the player
             // walk over to the specific door.
             ovalOfficeKeyText.text = "N/A";
@@ -141,7 +141,6 @@ public class Shop : MonoBehaviour
     public void buyMoneyUpgrade()
     {
         int currCost = GrowthFunc.Fibonacci(player.u_money + initMoneyCost);
-
         if (purchase(currCost))
         {
             player.u_money++;
@@ -152,27 +151,32 @@ public class Shop : MonoBehaviour
 
     public bool purchase(int cost)
     {
-               
-        if (player.scrap < cost) return false;
+        if (player.scrap < cost)
+        {
+            audioSource.PlayOneShot(purchaseFailSound);
+            return false;
+        }
 
-        Debug.Log("Purchase successful!");
         player.scrap -= cost;
         player.handleUpgrade();
+        audioSource.PlayOneShot(purchaseSuccessSound);
         return true;
-
     }
 
     public void OpenShop()
     {
         Player.Instance.FreezeMovement();
         UpgradesCanvas.SetActive(true);
+        audioSource.PlayOneShot(shopOpenSound);
     }
-        
-        public void CloseShop()
+
+    public void CloseShop()
     {
         Player.Instance.UnfreezeMovement();
         UpgradesCanvas.SetActive(false);
+        audioSource.PlayOneShot(shopCloseSound);
     }
+
     private void UpdateUpgradeStatusUI()
     {
         string text = "";
