@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
     public Animator animator;
     public SpriteRenderer sr;
+    public Color flashColor = Color.red;
+    public float duration = 0.1f;
 
     [Header("Movement Settings")]
     public float playerAccel = 15f;
@@ -177,6 +180,14 @@ public class Player : MonoBehaviour
     public void dmg(float damage)
     {
         batteryLeft -= damage;
+        FlashRoutine();
+    }
+
+    private IEnumerator FlashRoutine()
+    {
+        sr.color = flashColor;
+        yield return new WaitForSeconds(duration);
+        sr.color = Color.white;
     }
 }   
 
