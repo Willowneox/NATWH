@@ -10,8 +10,14 @@ public class Shop : MonoBehaviour
     public TextMeshProUGUI upgradeStatusText;
 
 
-    // IDEA: Disable buttons you cannot afford
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shopOpenSound;
+    public AudioClip shopCloseSound;
+    public AudioClip purchaseSuccessSound;
+    public AudioClip purchaseFailSound;
 
+    // IDEA: Disable buttons you cannot afford
     [Header("Upgrade Cost Text")]
     public Text batteryText;
     public Text roomKeyText;
