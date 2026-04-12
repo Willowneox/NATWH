@@ -96,3 +96,10 @@ MonoBehaviour:
   - {fileID: 5297603362540929479, guid: 7ad6aab03efc1cb4b840b6b5333f9347, type: 3}
   - {fileID: 733223811846877563, guid: 7ad6aab03efc1cb4b840b6b5333f9347, type: 3}
   dropZone: {fileID: 0}
+  enlargeFactor: 1.1
+  duration: 0.1
+  _paperSounds:
+  - {fileID: 8300000, guid: 5be4bc6f4f2f9124589517501e603da7, type: 3}
+  - {fileID: 8300000, guid: c9efbeef4e1d5c34987276b0bd838baa, type: 3}
+  - {fileID: 8300000, guid: 5c3a54f8ae3842642b9caf5a249e8b8f, type: 3}
+  _paperSoundVolume: 1
