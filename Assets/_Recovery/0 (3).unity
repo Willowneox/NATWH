@@ -2825,6 +2825,7 @@ GameObject:
   - component: {fileID: 951248185}
   - component: {fileID: 951248186}
   - component: {fileID: 951248187}
+  - component: {fileID: 951248188}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -3031,6 +3032,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &951248188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951248180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00009c5fab259ad49b87ca565bde261d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
+  _spriteRenderer: {fileID: 951248183}
+  _offset: 0
 --- !u!1 &982618874
 GameObject:
   m_ObjectHideFlags: 0
