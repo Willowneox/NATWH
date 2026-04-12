@@ -6518,7 +6518,7 @@ MonoBehaviour:
   - {fileID: 3415320479848295054, guid: cbead2213acbc1549bb1af1cd760b80e, type: 3}
   - {fileID: 477434448985061991, guid: cbead2213acbc1549bb1af1cd760b80e, type: 3}
   image: {fileID: 1585972457}
-  blinkSpeed: 3
+  blinkSpeed: 10
 --- !u!1 &1670824712
 GameObject:
   m_ObjectHideFlags: 0
