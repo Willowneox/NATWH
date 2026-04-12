@@ -23,6 +23,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D player){
         if(player.gameObject.CompareTag("Player")){
+            Debug.Log("dmg");
             player.gameObject.GetComponent<Player>().dmg(Random.Range(1.5f, 2.5f));
         }
     }

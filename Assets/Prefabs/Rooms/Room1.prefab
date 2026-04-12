@@ -1388,7 +1388,10 @@ MonoBehaviour:
   _trashContainer: {fileID: 8677049692170961270}
   _trashSpawnArea: {fileID: 535371312653823068}
   _trashPrefab: {fileID: 4602366844252870985, guid: c42ff3372e2925a4daaec63404531600, type: 3}
+  _ObsPrefab: {fileID: 6707453707204714105, guid: e48a0aebb9afd4ae7a0c47a09e3ef2cd, type: 3}
   _minTrash: 3
+  _minObs: 3
+  _maxObs: 8
   _maxTrash: 5
   _trashCheckRadius: 0.5
   _maxPlacementAttempts: 10
