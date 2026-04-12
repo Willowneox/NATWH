@@ -12,6 +12,8 @@ public class MinigameSpawner : MonoBehaviour
 
     public event Action OnMinigameComplete;
 
+    public const int SCRAP_REWARD = 1;
+
     private void Awake()
     {
         gameObject.SetActive(false);
@@ -49,6 +51,7 @@ public class MinigameSpawner : MonoBehaviour
 
     public void EndMinigame()
     {
+        Player.Instance.scrap += MinigameSpawner.SCRAP_REWARD;
         Player.Instance.UnfreezeMovement();
         OnMinigameComplete?.Invoke();
         gameObject.SetActive(false);

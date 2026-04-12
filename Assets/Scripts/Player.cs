@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
 
     public static Player Instance;
 
-    private void Start()
+    private void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -162,5 +162,11 @@ public class Player : MonoBehaviour
         FreezeMovement();
         // game over screen
     }
-}
+
+    public void dmg(float damage)
+    {
+        batteryLeft -= damage;
+    }
+}   
+
 

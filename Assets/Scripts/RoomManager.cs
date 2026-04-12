@@ -5,11 +5,13 @@ public class RoomManager : MonoBehaviour
 {
     public static RoomManager Instance { get; private set; }
 
-    [SerializeField] private GameObject _roomPrefab;
+    [SerializeField] private List<GameObject> _roomPrefab;
     [SerializeField] private float _roomWidth = 20f;
     [SerializeField] private float _roomHeight = 20f;
 
     private Dictionary<Vector2Int, Room> _spawnedRooms = new();
+
+    Vector2 _forbiddenCoords = new Vector2Int(0, 1);
 
     private void Awake()
     {
@@ -39,11 +41,16 @@ public class RoomManager : MonoBehaviour
         }
 
         Vector3 newPos = ownerRoom.transform.position + DirectionToWorld(door.direction);
-        Room newRoom = Instantiate(_roomPrefab, newPos, Quaternion.identity)
+
+        int randIndex = Random.Range(0, 2);
+
+        Room newRoom = Instantiate(_roomPrefab[randIndex], newPos, Quaternion.identity)
             .GetComponent<Room>();
 
         _spawnedRooms[newCoord] = newRoom;
         newRoom.Generate(Opposite(door.direction));
+
+        BlockForbiddenDoors(newRoom, newCoord);
     }
 
     private Vector2Int GetCoord(Room room)
@@ -87,5 +94,13 @@ public class RoomManager : MonoBehaviour
             DoorDirection.West => DoorDirection.East,
             _ => dir
         };
+    }
+    private void BlockForbiddenDoors(Room room, Vector2Int roomCoord)
+    {
+        foreach (DoorDirection dir in System.Enum.GetValues(typeof(DoorDirection)))
+        {
+            Vector2Int neighborCoord = roomCoord + DirectionToOffset(dir);
+            if (_forbiddenCoords == neighborCoord) room.DisableDoor(dir);
+        }
     }
 }

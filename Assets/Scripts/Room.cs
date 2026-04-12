@@ -8,7 +8,7 @@ public class Room : MonoBehaviour
     [SerializeField] private Door _doorWest;
 
     [SerializeField] private Transform _trashContainer;
-    [SerializeField] private BoxCollider2D _trashSpawnArea;
+    [SerializeField] private Collider2D _trashSpawnArea;
     [SerializeField] private GameObject _trashPrefab;
     [SerializeField] private int _minTrash = 3;
     [SerializeField] private int _maxTrash = 8;
@@ -61,12 +61,18 @@ public class Room : MonoBehaviour
                     Random.Range(bounds.min.x, bounds.max.x),
                     Random.Range(bounds.min.y, bounds.max.y));
 
-                if (Physics2D.OverlapCircle(randomPos, _trashCheckRadius) == null)
+                if (Physics2D.OverlapCircle(randomPos, _trashCheckRadius) != null)
                 {
                     Instantiate(_trashPrefab, randomPos, Quaternion.identity, _trashContainer);
                     break;
                 }
             }
         }
+    }
+    public void DisableDoor(DoorDirection direction)
+    {
+        Door door = GetDoor(direction);
+        if (door == null) return;
+        door.gameObject.SetActive(false);
     }
 }
