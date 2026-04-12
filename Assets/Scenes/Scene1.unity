@@ -3686,6 +3686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   animator: {fileID: 951248185}
   sr: {fileID: 951248183}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  duration: 0.1
   playerAccel: 3
   speedCap: 5
   friction: 1
@@ -6175,7 +6177,7 @@ MonoBehaviour:
   _trashContainer: {fileID: 1302009860}
   _trashSpawnArea: {fileID: 2062388861}
   _trashPrefab: {fileID: 4602366844252870985, guid: c42ff3372e2925a4daaec63404531600, type: 3}
-  _ObsPrefab: {fileID: 0}
+  _ObsPrefab: {fileID: 6707453707204714105, guid: e48a0aebb9afd4ae7a0c47a09e3ef2cd, type: 3}
   _minTrash: 2
   _minObs: 3
   _maxObs: 8
