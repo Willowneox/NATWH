@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3199082223589616035}
   - component: {fileID: 4922208499920352806}
   m_Layer: 0
-  m_Name: TrashPile
+  m_Name: TrashPileFridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2999900096960827289, guid: fc92f255dabbcea46ace6e48c90eb00b, type: 3}
+  m_Sprite: {fileID: 1217775587141972455, guid: fc92f255dabbcea46ace6e48c90eb00b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,12 +127,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-<<<<<<< Updated upstream:Assets/Prefabs/TrashPile.prefab
-  m_Offset: {x: 0, y: 0}
-=======
-  m_Offset: {x: 0, y: 0.07}
->>>>>>> Stashed changes:Assets/Prefabs/TrashPilePapers.prefab
-  m_Radius: 1.5765934
+  m_Offset: {x: 0, y: 1.5906923}
+  m_Radius: 2.5093076
 --- !u!114 &4922208499920352806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,3 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a828e6511756b644a1a9f65377fd824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashPile
+  _trashSprite: {fileID: 1217775587141972455, guid: fc92f255dabbcea46ace6e48c90eb00b, type: 3}
+  _spriteRenderer: {fileID: 8899390043770032688}
+  _minigamePrefab: {fileID: 4967120258365943977, guid: 9dd2ad789e8289e4097d2bf8d909838c, type: 3}
+  _cleanCompleteSound: {fileID: 8300000, guid: f1820ab3d6d3aa8408a7bdd8c8feb641, type: 3}
+  _cleanSoundVolume: 3
+  isCleaned: 0

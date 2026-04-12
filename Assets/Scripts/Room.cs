@@ -57,6 +57,10 @@ public class Room : MonoBehaviour
     {
         int count = Random.Range(_minTrash, _maxTrash + 1);
         Bounds bounds = _trashSpawnArea.bounds;
+<<<<<<< Updated upstream
+=======
+        int layerMask = ~LayerMask.GetMask("TrashSpawnZone", "Ignore Raycast");
+>>>>>>> Stashed changes
 
         for (int i = 0; i < count; i++)
         {
@@ -66,11 +70,24 @@ public class Room : MonoBehaviour
                     Random.Range(bounds.min.x, bounds.max.x),
                     Random.Range(bounds.min.y, bounds.max.y));
 
+<<<<<<< Updated upstream
                 if (Physics2D.OverlapCircle(randomPos, _trashCheckRadius) != null)
                 {
                     Instantiate(_trashPrefab, randomPos, Quaternion.identity, _trashContainer);
                     break;
                 }
+=======
+                bool inArea = _trashSpawnArea.OverlapPoint(randomPos);
+                Collider2D hit = Physics2D.OverlapPoint(randomPos, layerMask);
+
+                if (!inArea) continue;
+                if (hit != null) continue;
+
+                GameObject prefab = _trashPrefabs[Random.Range(0, _trashPrefabs.Count)];
+                Instantiate(prefab, randomPos, Quaternion.identity, _trashContainer);
+                spawned = true;
+                break;
+>>>>>>> Stashed changes
             }
         }
     }

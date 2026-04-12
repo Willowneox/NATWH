@@ -208,6 +208,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MinigameTrash
   trashPrefab: {fileID: 725782300497516690, guid: 4c624e03a096864429edb3171c26dca2, type: 3}
   numOfTrash: 4
+  _clickSounds:
+  - {fileID: 8300000, guid: 333fff9f412685043938897004c65d01, type: 3}
+  - {fileID: 8300000, guid: 6b6be061e192a014ba5785e2d9b87f15, type: 3}
+  - {fileID: 8300000, guid: 5765467c3b74f4949b555e35da411246, type: 3}
+  _clickSoundVolume: 1
 --- !u!222 &4558707040211928728
 CanvasRenderer:
   m_ObjectHideFlags: 0
