@@ -35,6 +35,7 @@ public class Room : MonoBehaviour
         IsGenerated = true;
 
         SpawnTrash();
+        SpawnObstacle();
 
         if (sharedDoorDirection.HasValue)
             GetDoor(sharedDoorDirection.Value).Open();
