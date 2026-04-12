@@ -163,7 +163,8 @@ public class Player : MonoBehaviour
         // game over screen
     }
 
-    public void dmg(float damage){
+    public void dmg(float damage)
+    {
         batteryLeft -= damage;
     }
 }   

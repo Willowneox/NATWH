@@ -69,4 +69,10 @@ public class Room : MonoBehaviour
             }
         }
     }
+    public void DisableDoor(DoorDirection direction)
+    {
+        Door door = GetDoor(direction);
+        if (door == null) return;
+        door.gameObject.SetActive(false);
+    }
 }

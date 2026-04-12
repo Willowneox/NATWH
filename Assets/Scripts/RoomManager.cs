@@ -11,6 +11,8 @@ public class RoomManager : MonoBehaviour
 
     private Dictionary<Vector2Int, Room> _spawnedRooms = new();
 
+    Vector2 _forbiddenCoords = new Vector2Int(0, 1);
+
     private void Awake()
     {
         if (Instance != null) Destroy(gameObject);
@@ -47,6 +49,8 @@ public class RoomManager : MonoBehaviour
 
         _spawnedRooms[newCoord] = newRoom;
         newRoom.Generate(Opposite(door.direction));
+
+        BlockForbiddenDoors(newRoom, newCoord);
     }
 
     private Vector2Int GetCoord(Room room)
@@ -90,5 +94,13 @@ public class RoomManager : MonoBehaviour
             DoorDirection.West => DoorDirection.East,
             _ => dir
         };
+    }
+    private void BlockForbiddenDoors(Room room, Vector2Int roomCoord)
+    {
+        foreach (DoorDirection dir in System.Enum.GetValues(typeof(DoorDirection)))
+        {
+            Vector2Int neighborCoord = roomCoord + DirectionToOffset(dir);
+            if (_forbiddenCoords == neighborCoord) room.DisableDoor(dir);
+        }
     }
 }
