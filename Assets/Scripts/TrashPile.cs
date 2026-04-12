@@ -17,7 +17,6 @@ public class TrashPile : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        Debug.Log(isOnTrigger + " " + Mouse.current.leftButton.wasPressedThisFrame);
         if (isOnTrigger && Mouse.current.leftButton.wasPressedThisFrame)
         {
             MinigameSpawner.Instance.OnMinigameComplete += OnMinigameComplete;
