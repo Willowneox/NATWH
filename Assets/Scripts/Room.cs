@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -10,10 +11,16 @@ public class Room : MonoBehaviour
     [SerializeField] private Transform _trashContainer;
     [SerializeField] private Collider2D _trashSpawnArea;
     [SerializeField] private GameObject _trashPrefab;
+    [SerializeField] private GameObject _ObsPrefab;
     [SerializeField] private int _minTrash = 3;
-    [SerializeField] private int _maxTrash = 8;
+    [SerializeField] private int _minObs = 3;
+    [SerializeField] private int _maxObs = 8;
+
+    [SerializeField] private int _maxTrash = 9;
     [SerializeField] private float _trashCheckRadius = 0.5f;
-    [SerializeField] private int _maxPlacementAttempts = 10;
+    [SerializeField] private int _maxPlacementAttempts = 20;
+
+    [SerializeField] private List<GameObject> _trashPrefabs;
 
     public bool IsGenerated { get; private set; } = false;
 
@@ -31,6 +38,7 @@ public class Room : MonoBehaviour
         IsGenerated = true;
 
         SpawnTrash();
+        SpawnObstacle();
 
         if (sharedDoorDirection.HasValue)
             GetDoor(sharedDoorDirection.Value).Open();
@@ -52,6 +60,40 @@ public class Room : MonoBehaviour
     {
         int count = Random.Range(_minTrash, _maxTrash + 1);
         Bounds bounds = _trashSpawnArea.bounds;
+        int layerMask = ~LayerMask.GetMask("TrashSpawnZone", "Ignore Raycast");
+        Debug.Log($"Trying to spawn {count} trash. Bounds: {bounds.min} to {bounds.max}");
+
+        for (int i = 0; i < count; i++)
+        {
+            bool spawned = false;
+            for (int attempt = 0; attempt < _maxPlacementAttempts; attempt++)
+            {
+                Vector2 randomPos = new Vector2(
+                    Random.Range(bounds.min.x, bounds.max.x),
+                    Random.Range(bounds.min.y, bounds.max.y));
+
+                bool inArea = _trashSpawnArea.OverlapPoint(randomPos);
+                Collider2D hit = Physics2D.OverlapPoint(randomPos, layerMask);
+
+                Debug.Log($"Attempt {attempt}: pos={randomPos} inArea={inArea} hit={hit?.gameObject.name ?? "none"} layer={hit?.gameObject.layer}");
+
+                if (!inArea) continue;
+                if (hit != null) continue;
+
+                GameObject prefab = _trashPrefabs[Random.Range(0, _trashPrefabs.Count)];
+                Instantiate(prefab, randomPos, Quaternion.identity, _trashContainer);
+                spawned = true;
+                Debug.Log($"Spawned trash at {randomPos}");
+                break;
+            }
+            if (!spawned) Debug.Log($"Failed to spawn trash pile {i} after {_maxPlacementAttempts} attempts");
+        }
+    }
+
+    private void SpawnObstacle()
+    {
+        int count = Random.Range(_minObs, _maxObs + 1);
+        Bounds bounds = _trashSpawnArea.bounds;
 
         for (int i = 0; i < count; i++)
         {
@@ -63,7 +105,7 @@ public class Room : MonoBehaviour
 
                 if (Physics2D.OverlapCircle(randomPos, _trashCheckRadius) != null)
                 {
-                    Instantiate(_trashPrefab, randomPos, Quaternion.identity, _trashContainer);
+                    Instantiate(_ObsPrefab, randomPos, Quaternion.identity, _trashContainer);
                     break;
                 }
             }
@@ -75,4 +117,5 @@ public class Room : MonoBehaviour
         if (door == null) return;
         door.gameObject.SetActive(false);
     }
+    
 }

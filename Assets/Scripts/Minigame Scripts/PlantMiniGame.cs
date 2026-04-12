@@ -8,8 +8,8 @@ public class PlantMiniGame : MonoBehaviour
     {
         numOfPlants = Random.Range(4,6);
         for(int i = 0; i < numOfPlants; i++){
-            int x_rand = Random.Range(-350,350);
-            int y_rand = Random.Range(-130,100);
+            int x_rand = Random.Range(-500,500);
+            int y_rand = Random.Range(-300,-100);
 
             GameObject plant = Instantiate(prefab, gameObject.transform);
             RectTransform rect = plant.GetComponent<RectTransform>();

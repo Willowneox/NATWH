@@ -8,12 +8,14 @@ public class Blade : MonoBehaviour
     [SerializeField] private Collider2D bladeCollider;
     //public float minVelo = 0.001f;
     private Vector2 direction;
+    //private TrailRenderer bladeTrail;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         mainCamera = Camera.main;
         bladeCollider = GetComponent<Collider2D>();
+        //bladeTrail = GetComponentInChildren<TrailRenderer>();
     }
     private void OnEnable(){
         StopCutting();
@@ -40,11 +42,14 @@ public class Blade : MonoBehaviour
 
         cutting = true;
         bladeCollider.enabled = true;
+        // bladeTrail.enabled = true;
+        // bladeTrail.Clear(); 
     }
 
     private void StopCutting(){
         cutting = false;
         bladeCollider.enabled = false;
+        // bladeTrail.enabled = false;
     }
 
     private void ContCutting(){

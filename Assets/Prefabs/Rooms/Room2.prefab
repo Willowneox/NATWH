@@ -111,8 +111,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 891821239
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5213229242370633579, guid: 550b54e82b86b0b49893161027909b6d, type: 3}
@@ -539,9 +539,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 891821239
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7367917321874442693, guid: d400f9aa2b46ad44085b24ec63058736, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -732,9 +732,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 891821239
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5213229242370633579, guid: 550b54e82b86b0b49893161027909b6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -797,7 +797,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.10128212}
+  m_Offset: {x: 0, y: -0.33757877}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -807,7 +807,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.625, y: 3.5474358}
+  m_Size: {x: 3.625, y: 4.4251575}
   m_EdgeRadius: 0
 --- !u!58 &8163403996917058649
 CircleCollider2D:
@@ -1038,9 +1038,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 891821239
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7367917321874442693, guid: d400f9aa2b46ad44085b24ec63058736, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1257,19 +1257,19 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -6.5711164, y: 11.565789}
-      - {x: -6.5157366, y: 4.5677814}
-      - {x: -14.660582, y: 4.5873365}
-      - {x: -14.840963, y: -5.654626}
-      - {x: -6.716082, y: -5.749173}
-      - {x: -6.8368254, y: -14.628421}
-      - {x: 6.691419, y: -14.689359}
-      - {x: 6.859184, y: -5.8913946}
-      - {x: 14.870565, y: -5.8449416}
-      - {x: 14.70696, y: 4.7061462}
-      - {x: 6.653178, y: 4.7570267}
-      - {x: 6.6240096, y: 11.652101}
-      - {x: -0.018065453, y: 11.607559}
+    - - {x: 5.6617155, y: 8.525676}
+      - {x: 0.6502452, y: 7.969812}
+      - {x: -4.164955, y: 8.134134}
+      - {x: -8.688353, y: 2.0904226}
+      - {x: -12.217239, y: -1.55092}
+      - {x: -11.179843, y: -11.733074}
+      - {x: 1.3350348, y: -9.767267}
+      - {x: 6.6420326, y: -8.931509}
+      - {x: 7.3426676, y: -5.1211057}
+      - {x: 11.377312, y: 1.8831844}
+      - {x: 10.996196, y: 8.593359}
+      - {x: 9.953657, y: 8.684371}
+      - {x: 7.6545997, y: 8.0607605}
   m_UseDelaunayMesh: 1
 --- !u!1 &9102699692903957054
 GameObject:
@@ -1356,8 +1356,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2077807349
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: c252355a9ca3773438720d40bb786c2b, type: 3}
@@ -1388,8 +1388,17 @@ MonoBehaviour:
   _doorWest: {fileID: 1793491504265649183}
   _trashContainer: {fileID: 7640526538397957615}
   _trashSpawnArea: {fileID: 3440989188909278804}
-  _trashPrefab: {fileID: 4602366844252870985, guid: c42ff3372e2925a4daaec63404531600, type: 3}
+  _trashPrefab: {fileID: 0}
+  _ObsPrefab: {fileID: 6707453707204714105, guid: e48a0aebb9afd4ae7a0c47a09e3ef2cd, type: 3}
   _minTrash: 3
-  _maxTrash: 5
-  _trashCheckRadius: 0.5
+  _minObs: 2
+  _maxObs: 5
+  _maxTrash: 6
+  _trashCheckRadius: 1
   _maxPlacementAttempts: 10
+  _trashPrefabs:
+  - {fileID: 4602366844252870985, guid: edbade7744c9e2845b92de555645ab84, type: 3}
+  - {fileID: 4602366844252870985, guid: bc5bf6f25fd2a9d4aa02fbb2637ece4c, type: 3}
+  - {fileID: 4602366844252870985, guid: 07ea3f567206b3d4bb1a99c3776225b4, type: 3}
+  - {fileID: 4602366844252870985, guid: 49a0e88a3e7fac14780eff1bbe39cfa6, type: 3}
+  - {fileID: 1181967666024695044, guid: 71ccc94a3c9a54550bedc7ce156b0c4a, type: 3}
