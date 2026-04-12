@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float duration = 0.1f;
     public GameObject FadeOut;
     public GameObject RestartPanel;
+    public GameObject restartButton;
 
     [Header("Movement Settings")]
     public float playerAccel = 15f;
@@ -183,7 +184,6 @@ public class Player : MonoBehaviour
     }
     public void RestartGame()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene("Scene1");
     }
 
@@ -197,7 +197,6 @@ public class Player : MonoBehaviour
         if (RestartPanel != null)
             RestartPanel.SetActive(true);
 
-        Time.timeScale = 0f;
     }
 
     public void dmg(float damage)
