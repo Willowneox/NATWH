@@ -127,7 +127,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.62}
+  m_Offset: {x: 0, y: 1.38}
   m_Radius: 1.5765934
 --- !u!114 &4922208499920352806
 MonoBehaviour:
@@ -144,4 +144,5 @@ MonoBehaviour:
   _trashSprite: {fileID: 2888492948545513881, guid: fc92f255dabbcea46ace6e48c90eb00b, type: 3}
   _spriteRenderer: {fileID: 8899390043770032688}
   _minigamePrefab: {fileID: 8388667041403032907, guid: 2dea068dd9d950c4b82e2d94f1e6244a, type: 3}
+  _cleanCompleteSound: {fileID: 8300000, guid: 4c78944d951c87b4fa85f4159e01e3af, type: 3}
   isCleaned: 0

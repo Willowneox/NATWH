@@ -144,4 +144,5 @@ MonoBehaviour:
   _trashSprite: {fileID: 2136077724154301620, guid: fc92f255dabbcea46ace6e48c90eb00b, type: 3}
   _spriteRenderer: {fileID: 8899390043770032688}
   _minigamePrefab: {fileID: 6581490929458787827, guid: 85f078e41266b7f4faafff9e36c8a556, type: 3}
+  _cleanCompleteSound: {fileID: 8300000, guid: 4c78944d951c87b4fa85f4159e01e3af, type: 3}
   isCleaned: 0
