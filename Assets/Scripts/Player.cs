@@ -162,5 +162,10 @@ public class Player : MonoBehaviour
         FreezeMovement();
         // game over screen
     }
-}
+
+    public void dmg(float damage){
+        batteryLeft -= damage;
+    }
+}   
+
 
