@@ -29,11 +29,14 @@ public class Shop : MonoBehaviour
     public Button vacuumButton;
     public Button ovalOfficeButton;
 
-    [Header("Initial Upgrade Costs")] // these correspond to fibonacci numbers
+    [Header("Initial Upgrade Costs")]
+    // these are INPUTS to the fibonacci function
     public int initBatteryCost = 0;
-    public int initRoomKeyCost = 0;
-    public int initSpeedCost = 1;
-    public int initMoneyCost = 8;
+    public int initSpeedCost = 2;
+    public int initMoneyCost = 6;
+
+    // these are RAW VALUES
+    public int initRoomKeyCost = 1;
     public int initVacuumCost = 8;
     public int ovalOfficeCost = 20;
     
@@ -51,7 +54,7 @@ public class Shop : MonoBehaviour
         UpgradesCanvas.SetActive(false);
         UpdateUpgradeStatusUI();
 
-        batteryText.text = GrowthFunc.Fibonacci(initBatteryCost).ToString();
+        batteryText.text = initBatteryCost.ToString();
         roomKeyText.text = GrowthFunc.Fibonacci(initRoomKeyCost).ToString();
         speedText.text = GrowthFunc.Fibonacci(initSpeedCost).ToString();
         ovalOfficeKeyText.text = ovalOfficeCost.ToString();
@@ -61,26 +64,23 @@ public class Shop : MonoBehaviour
 
     public void BuyBattery()
     {
-        // calculate cost of next battery from growth function
-        int currCost = GrowthFunc.Fibonacci(player.u_batteries + initBatteryCost);
-
-        if (purchase(currCost))
+        if (purchase(initBatteryCost))
         {
             player.u_batteries++;
-            batteryText.text = GrowthFunc.Fibonacci(player.u_batteries + initBatteryCost).ToString();
+            batteryText.text = initBatteryCost.ToString();
         }
         UpdateUpgradeStatusUI();
     }
     
     public void BuyRoomKey()
     {
-        int currCost = GrowthFunc.Fibonacci(player.u_roomCount + initRoomKeyCost);
+        int currCost = initRoomKeyCost;
 
         if (purchase(currCost))
         {
             player.keyCount++;
-            player.u_roomCount++;
-            roomKeyText.text = GrowthFunc.Fibonacci(player.u_roomCount + initRoomKeyCost).ToString();
+            player.keysPurchased++;
+            roomKeyText.text = initRoomKeyCost.ToString();
         }
         UpdateUpgradeStatusUI();
     }
@@ -90,9 +90,7 @@ public class Shop : MonoBehaviour
     {
         if (player.u_ovalOfficeUnlocked) return; // already bought
 
-        const int cost = 10000; // no growth function bc 1 time upgrade
-
-        if (purchase(cost))
+        if (purchase(ovalOfficeCost))
         {
             player.u_ovalOfficeUnlocked = true;
             // Disable button
@@ -124,9 +122,7 @@ public class Shop : MonoBehaviour
     {
         if (player.u_vacuumFilterUnlocked) return;
 
-        const int cost = 500; // no growth function bc 1 time upgrade
-
-        if (purchase(cost))
+        if (purchase(initVacuumCost))
         {
             player.u_vacuumFilterUnlocked = true;
             vacuumText.text = "N/A";
@@ -143,6 +139,7 @@ public class Shop : MonoBehaviour
         if (purchase(currCost))
         {
             player.u_money++;
+            initMoneyCost += 2;
             moneyText.text = GrowthFunc.Fibonacci(player.u_money + initMoneyCost).ToString();
         }
         UpdateUpgradeStatusUI();
@@ -185,8 +182,8 @@ public class Shop : MonoBehaviour
         if (player.u_batteries > 0)
             text += "Battery: " + player.u_batteries + "\n";
 
-        if (player.u_roomCount > 0)
-            text += "Keys purchased: " + player.u_roomCount + "\n";
+        if (player.keysPurchased > 0)
+            text += "Keys: " + player.keyCount + "\n";
 
         if (player.u_speed > 0)
             text += "Speed: " + player.u_speed + "\n";
