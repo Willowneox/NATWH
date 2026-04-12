@@ -11,12 +11,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
         _player = Player.Instance;
     }
 
-    private void OnMouseDown()
+    private void Update()
     {
-        if (!_playerOverlapping) return;
-        Debug.Log("clicked");
-
-        TryWin();
+        if (_playerOverlapping && Mouse.current.leftButton.isPressed)
+        {
+            Debug.Log("clicked");
+            TryWin();
+        }
     }
 
     private void TryWin()
