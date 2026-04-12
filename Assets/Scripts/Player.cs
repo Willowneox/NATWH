@@ -51,8 +51,8 @@ public class Player : MonoBehaviour
     // Scrap earning upgrade...
     [Header("Increased Scrap Value")]
     public int u_money = 0;
-    [SerializeField] private float B_SCRAP_EARNED = 1.0f;
-    [SerializeField] private float U_SCRAP_EARNED_PER_UPGRADE = 2f; // Maybe consider using a growth function for these? idk
+    public int B_SCRAP_EARNED = 1; // unused
+    public int U_SCRAP_EARNED_PER_UPGRADE = 2; // Maybe consider using a growth function for these? idk
 
     private Vector2 lastMoveDirection = Vector2.down;
     public static Player Instance;

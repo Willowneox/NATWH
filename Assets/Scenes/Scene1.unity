@@ -352,7 +352,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 0
 --- !u!222 &201461485
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -431,7 +431,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 0
 --- !u!222 &271946032
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -518,7 +518,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 0
 --- !u!1 &344953744
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,7 +2483,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 0
 --- !u!222 &840619946
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2868,7 +2868,7 @@ MonoBehaviour:
   U_SPEED_PER_UPGRADE: 4
   u_money: 0
   B_SCRAP_EARNED: 1
-  U_SCRAP_EARNED_PER_UPGRADE: 0.2
+  U_SCRAP_EARNED_PER_UPGRADE: 2
 --- !u!212 &951248183
 SpriteRenderer:
   serializedVersion: 2
@@ -3689,9 +3689,9 @@ MonoBehaviour:
   vacuumButton: {fileID: 681472855}
   ovalOfficeButton: {fileID: 712245908}
   initBatteryCost: 1
-  initRoomKeyCost: 1
   initSpeedCost: 1
   initMoneyCost: 5
+  initRoomKeyCost: 1
   initVacuumCost: 5
   ovalOfficeCost: 20
 --- !u!4 &1336744289
@@ -5595,7 +5595,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 16
+  m_Text: 0
 --- !u!222 &2058531312
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5823,7 +5823,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10000
+  m_Text: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
