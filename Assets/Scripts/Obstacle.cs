@@ -8,6 +8,11 @@ public class Obstacle : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = availableSprites[Random.Range(0, availableSprites.Length)];
+        int dir = Random.Range(1,3);
+        if(dir == 2){
+            spriteRenderer.flipX = true;
+        }
     }
 
     // Update is called once per frame
