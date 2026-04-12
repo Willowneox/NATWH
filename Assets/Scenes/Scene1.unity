@@ -1110,9 +1110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MinigameSpawner
   minigamePrefabs:
   - {fileID: 6581490929458787827, guid: 85f078e41266b7f4faafff9e36c8a556, type: 3}
-  - {fileID: 8388667041403032907, guid: 2dea068dd9d950c4b82e2d94f1e6244a, type: 3}
-  - {fileID: 4967120258365943977, guid: 9dd2ad789e8289e4097d2bf8d909838c, type: 3}
-  - {fileID: 7439980183778967716, guid: 447a74f79ff6b4369b0a06d37c200f3c, type: 3}
 --- !u!114 &573905796
 MonoBehaviour:
   m_ObjectHideFlags: 0
