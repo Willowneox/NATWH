@@ -13,7 +13,11 @@ public class Scenes : MonoBehaviour
 
     void Update()
     {
-        if (currentFrame >= frames.Length) return;
+        if (currentFrame > frames.Length - 1){
+            SceneManager.LoadScene("Scene1");
+        }else{
+
+        
 
         timer += Time.deltaTime;
         if (timer >= 1f / fps)
@@ -21,6 +25,7 @@ public class Scenes : MonoBehaviour
             timer = 0f;
             displayImage.sprite = frames[currentFrame];
             currentFrame++;
+        }
         }
     }
 }
