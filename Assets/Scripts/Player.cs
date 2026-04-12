@@ -5,9 +5,11 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     public Animator animator;
+    //public Animator fade;
     public SpriteRenderer sr;
     public Color flashColor = Color.red;
     public float duration = 0.1f;
+    public GameObject FadeOut;
 
     [Header("Movement Settings")]
     public float playerAccel = 15f;
@@ -174,6 +176,8 @@ public class Player : MonoBehaviour
      private void triggerNoChargeEnding()
     {
         FreezeMovement();
+        FadeOut.SetActive(true);
+        //fade.SetBool("Dead", true);
         // game over screen
     }
 
