@@ -6,16 +6,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class DraggablePaper : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private RectTransform rt;
     private Canvas canvas;
-    private TrashDragSpawner spawner;
+    private PaperDragSpawner spawner;
     [SerializeField] private Image sprite;
 
     public List<Sprite> trashSprites;
 
-    private const float ScaleFactor = 3f;
+    private const float ScaleFactor = 2f;
 
     [SerializeField] DropZone dropZone;
 
@@ -52,7 +52,7 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
     }
 
-    public void Init(TrashDragSpawner spawner, DropZone dropZone)
+    public void Init(PaperDragSpawner spawner, DropZone dropZone)
     {
         this.spawner = spawner;
         this.dropZone = dropZone;

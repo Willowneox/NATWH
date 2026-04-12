@@ -43,7 +43,7 @@
 
         [Header("Initial Upgrade Costs")]
         public int initBatteryCost = 0;
-        public int initSpeedCost = 2;
+        public int initSpeedCost = 1;
         public int initMoneyCost = 6;
         public int initRoomKeyCost = 1;
         public int initVacuumCost = 8;
@@ -243,4 +243,9 @@
             if (text == "") text = "No upgrades yet";
             upgradeStatusText.text = text;
         }
+
+    private void Update()
+    {
+        UpdateUpgradeStatusUI();
     }
+}
