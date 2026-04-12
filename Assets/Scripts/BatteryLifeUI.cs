@@ -20,7 +20,7 @@ public class BatteryLifeUI : MonoBehaviour
         float chunkSize = p.batteryCapacity / 6f;
         float positionInChunk = p.batteryLeft % chunkSize;
         float percentInChunk = positionInChunk / chunkSize;
-        bool shouldBlink = (percentInChunk < 0.5f && p.batteryLeft < chunkSize * 2);
+        bool shouldBlink = (p.batteryLeft < chunkSize * 2);
 
         if (shouldBlink)
         {

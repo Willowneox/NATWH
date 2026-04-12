@@ -5,7 +5,7 @@ public class WinScript : MonoBehaviour
 
     private Player _player;
     public bool _playerOverlapping;
-    public Canvas fadeoutCanvas;
+    public GameObject fadeoutCanvas;
     private void Start()
     {
         _player = Player.Instance;
@@ -14,7 +14,7 @@ public class WinScript : MonoBehaviour
     {
         if (_playerOverlapping && _player.u_ovalOfficeUnlocked)
         {
-            fadeoutCanvas.gameObject.SetActive(true);
+            fadeoutCanvas.SetActive(true);
             // load cutscene scene
         }
     }
