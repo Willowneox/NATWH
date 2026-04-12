@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {   
-    private Collider PlantCollider;
+    private Collider2D PlantCollider;
     private PlantMiniGame spawner;
     private RectTransform rt;
     private Canvas canvas;
@@ -11,6 +11,7 @@ public class Plant : MonoBehaviour
     {
         rt = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
+        PlantCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class Plant : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D o){
-        if(o.CompareTag("Blade")){
+        if(o.gameObject.CompareTag("Blade")){
             Debug.Log("hi");
             spawner.CutPlant(gameObject);
         }
