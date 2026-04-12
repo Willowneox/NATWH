@@ -25,37 +25,36 @@ public class Player : MonoBehaviour
 
     [Header("Keys Count")]
     public int keyCount = 0;
+    public int keysPurchased = 0;
 
     [Header("Upgrades")]
     // add u_ before these variables, to make the code easier to read
 
     // each upgrade needs a base value, number of upgrades, and benefit per upgrade
     // ex: battery has a base value of 20, u_batteries to track num of battery upgrades owned, and BONUS_CHARGE_PER_BATTERY
+    [Header("Batteries")]
     public int u_batteries = 0;
     [SerializeField] private float B_BATTERY = 20f;
     [SerializeField] private float U_BONUS_CHARGE_PER_BATTERY = 5f;
 
-    // Room key upgrade is 1 per time
-    public int u_roomCount = 0;
-    [SerializeField] private float B_ROOM_COUNT = 1f;
-    [SerializeField] private float U_ROOM_COUNT_PER_UPGRADE = 1f;
-
     // Oval office unlock is a 1 time purchase
+    [Header("Presidents' Key")]
     public bool u_ovalOfficeUnlocked = false;
     public bool u_vacuumFilterUnlocked = false;
 
     // Speed upgrade
+    [Header("Speed")]
     public int u_speed = 0;
     [SerializeField] private float B_SPEED = INIT_SPEED_CAP;
     [SerializeField] private float U_SPEED_PER_UPGRADE = 4f; // Might need to play with this number.
 
     // Scrap earning upgrade...
+    [Header("Increased Scrap Value")]
     public int u_money = 0;
     [SerializeField] private float B_SCRAP_EARNED = 1.0f;
-    [SerializeField] private float U_SCRAP_EARNED_PER_UPGRADE = 0.2f; // Maybe consider using a growth function for these? idk
+    [SerializeField] private float U_SCRAP_EARNED_PER_UPGRADE = 2f; // Maybe consider using a growth function for these? idk
 
     private Vector2 lastMoveDirection = Vector2.down;
-
     public static Player Instance;
 
     private void Awake()

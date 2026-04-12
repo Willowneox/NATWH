@@ -1113,7 +1113,6 @@ MonoBehaviour:
   - {fileID: 8388667041403032907, guid: 2dea068dd9d950c4b82e2d94f1e6244a, type: 3}
   - {fileID: 4967120258365943977, guid: 9dd2ad789e8289e4097d2bf8d909838c, type: 3}
   - {fileID: 7439980183778967716, guid: 447a74f79ff6b4369b0a06d37c200f3c, type: 3}
-  - {fileID: 2294194886354070922, guid: 85d1581af0f5a447e9dc782ded3848b3, type: 3}
 --- !u!114 &573905796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2858,12 +2857,10 @@ MonoBehaviour:
   inShop: 0
   scrap: 0
   keyCount: 0
+  keysPurchased: 0
   u_batteries: 0
   B_BATTERY: 30
   U_BONUS_CHARGE_PER_BATTERY: 10
-  u_roomCount: 0
-  B_ROOM_COUNT: 1
-  U_ROOM_COUNT_PER_UPGRADE: 1
   u_ovalOfficeUnlocked: 0
   u_vacuumFilterUnlocked: 0
   u_speed: 0
@@ -3691,12 +3688,12 @@ MonoBehaviour:
   moneyText: {fileID: 2058531311}
   vacuumButton: {fileID: 681472855}
   ovalOfficeButton: {fileID: 712245908}
-  initBatteryCost: 4
+  initBatteryCost: 1
   initRoomKeyCost: 1
-  initSpeedCost: 4
-  initMoneyCost: 10
-  initVacuumCost: 500
-  ovalOfficeCost: 10000
+  initSpeedCost: 1
+  initMoneyCost: 5
+  initVacuumCost: 5
+  ovalOfficeCost: 20
 --- !u!4 &1336744289
 Transform:
   m_ObjectHideFlags: 0
@@ -5843,5 +5840,5 @@ SceneRoots:
   - {fileID: 1185158695}
   - {fileID: 356075186}
   - {fileID: 1670824714}
-  - {fileID: 713140186}
   - {fileID: 1464237685}
+  - {fileID: 713140186}

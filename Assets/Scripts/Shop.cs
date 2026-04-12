@@ -32,9 +32,9 @@ public class Shop : MonoBehaviour
     [Header("Initial Upgrade Costs")] // these correspond to fibonacci numbers
     public int initBatteryCost = 0;
     public int initRoomKeyCost = 0;
-    public int initSpeedCost = 1;
-    public int initMoneyCost = 8;
-    public int initVacuumCost = 8;
+    public int initSpeedCost = 0;
+    public int initMoneyCost = 3;
+    public int initVacuumCost = 5;
     public int ovalOfficeCost = 20;
     
     /*
@@ -74,13 +74,13 @@ public class Shop : MonoBehaviour
     
     public void BuyRoomKey()
     {
-        int currCost = GrowthFunc.Fibonacci(player.u_roomCount + initRoomKeyCost);
+        int currCost = GrowthFunc.Fibonacci(player.keysPurchased + initRoomKeyCost);
 
         if (purchase(currCost))
         {
             player.keyCount++;
-            player.u_roomCount++;
-            roomKeyText.text = GrowthFunc.Fibonacci(player.u_roomCount + initRoomKeyCost).ToString();
+            player.keysPurchased++;
+            roomKeyText.text = GrowthFunc.Fibonacci(player.keysPurchased + initRoomKeyCost).ToString();
         }
         UpdateUpgradeStatusUI();
     }
@@ -185,8 +185,8 @@ public class Shop : MonoBehaviour
         if (player.u_batteries > 0)
             text += "Battery: " + player.u_batteries + "\n";
 
-        if (player.u_roomCount > 0)
-            text += "Keys purchased: " + player.u_roomCount + "\n";
+        if (player.keysPurchased > 0)
+            text += "Keys: " + player.keyCount + "\n";
 
         if (player.u_speed > 0)
             text += "Speed: " + player.u_speed + "\n";

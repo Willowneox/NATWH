@@ -11,8 +11,8 @@ public class Room : MonoBehaviour
     [SerializeField] private Collider2D _trashSpawnArea;
     [SerializeField] private GameObject _trashPrefab;
     [SerializeField] private int _minTrash = 3;
-    [SerializeField] private int _maxTrash = 8;
-    [SerializeField] private float _trashCheckRadius = 0.5f;
+    [SerializeField] private int _maxTrash = 9;
+    [SerializeField] private float _trashCheckRadius = 1f;
     [SerializeField] private int _maxPlacementAttempts = 10;
 
     public bool IsGenerated { get; private set; } = false;
