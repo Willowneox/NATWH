@@ -1872,6 +1872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 595098857}
+  - component: {fileID: 595098858}
   m_Layer: 0
   m_Name: WinDoor
   m_TagString: Untagged
@@ -1894,6 +1895,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595098858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595098856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1af3e264aee683489ccb9aceb36b458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WinScript
+  _playerOverlapping: 0
+  fadeoutCanvas: {fileID: 2089374650}
 --- !u!1 &627309546
 GameObject:
   m_ObjectHideFlags: 0
