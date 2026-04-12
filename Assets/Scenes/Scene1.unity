@@ -3688,7 +3688,7 @@ MonoBehaviour:
   sr: {fileID: 951248183}
   playerAccel: 3
   speedCap: 5
-  friction: 2
+  friction: 1
   canMove: 1
   rb: {fileID: 951248187}
   batteryLeft: 20
@@ -3697,13 +3697,13 @@ MonoBehaviour:
   keyCount: 0
   keysPurchased: 0
   u_batteries: 0
-  B_BATTERY: 30
+  B_BATTERY: 40
   U_BONUS_CHARGE_PER_BATTERY: 10
   batteryCapacity: 0
   u_ovalOfficeUnlocked: 0
   u_vacuumFilterUnlocked: 0
   u_speed: 0
-  B_SPEED: 8
+  B_SPEED: 6
   U_SPEED_PER_UPGRADE: 4
   u_money: 0
   B_SCRAP_EARNED: 1
