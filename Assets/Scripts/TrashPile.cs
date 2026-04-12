@@ -7,6 +7,7 @@ public class TrashPile : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private GameObject _minigamePrefab;
     [SerializeField] private AudioClip _cleanCompleteSound;
+    [SerializeField] private float _cleanSoundVolume = 11f;
 
     public bool isOnTrigger { get; private set; } = false;
     public bool isCleaned = false;
@@ -41,7 +42,7 @@ public class TrashPile : MonoBehaviour
         Unsubscribe();
 
         if (_cleanCompleteSound != null)
-            AudioSource.PlayClipAtPoint(_cleanCompleteSound, transform.position);
+            AudioSource.PlayClipAtPoint(_cleanCompleteSound, transform.position, _cleanSoundVolume);
 
         Destroy(gameObject);
     }
