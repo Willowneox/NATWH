@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
@@ -36,11 +37,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void WinGame()
     {
-        Debug.Log("YOU WIN ");
+        Debug.Log("You Win.");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("WinningScene");
 
-        Time.timeScale = 0f;
 
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
