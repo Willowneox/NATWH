@@ -10,8 +10,14 @@ public class Shop : MonoBehaviour
     public TextMeshProUGUI upgradeStatusText;
 
 
-    // IDEA: Disable buttons you cannot afford
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shopOpenSound;
+    public AudioClip shopCloseSound;
+    public AudioClip purchaseSuccessSound;
+    public AudioClip purchaseFailSound;
 
+    // IDEA: Disable buttons you cannot afford
     [Header("Upgrade Cost Text")]
     public Text batteryText;
     public Text roomKeyText;
@@ -25,12 +31,12 @@ public class Shop : MonoBehaviour
     public Button ovalOfficeButton;
 
     [Header("Initial Upgrade Costs")] // these correspond to fibonacci numbers
-    public int initBatteryCost = 3;
-    public int initRoomKeyCost = 1;
-    public int initSpeedCost = 3;
+    public int initBatteryCost = 0;
+    public int initRoomKeyCost = 0;
+    public int initSpeedCost = 1;
     public int initMoneyCost = 8;
-    public int initVacuumCost = 500;
-    public int ovalOfficeCost = 10000;
+    public int initVacuumCost = 8;
+    public int ovalOfficeCost = 20;
     
     /*
      *      For each upgrade, create a new public Text object for the cost
@@ -92,7 +98,7 @@ public class Shop : MonoBehaviour
             player.u_ovalOfficeUnlocked = true;
             // Disable button
 
-
+            
             // TODO: Either trigger end of game cutscene here OR grey out this upgrade and let the player
             // walk over to the specific door.
             ovalOfficeKeyText.text = "N/A";
@@ -135,7 +141,6 @@ public class Shop : MonoBehaviour
     public void buyMoneyUpgrade()
     {
         int currCost = GrowthFunc.Fibonacci(player.u_money + initMoneyCost);
-
         if (purchase(currCost))
         {
             player.u_money++;
@@ -146,27 +151,34 @@ public class Shop : MonoBehaviour
 
     public bool purchase(int cost)
     {
-               
-        if (player.scrap < cost) return false;
+        if (player.scrap < cost)
+        {
+            audioSource.PlayOneShot(purchaseFailSound);
+            return false;
+        }
 
-        Debug.Log("Purchase successful!");
         player.scrap -= cost;
         player.handleUpgrade();
+        audioSource.PlayOneShot(purchaseSuccessSound);
         return true;
-
     }
 
     public void OpenShop()
     {
         Player.Instance.FreezeMovement();
+        Player.Instance.inShop = true;
         UpgradesCanvas.SetActive(true);
+        audioSource.PlayOneShot(shopOpenSound);
     }
-        
-        public void CloseShop()
+
+    public void CloseShop()
     {
         Player.Instance.UnfreezeMovement();
+        Player.Instance.inShop = false;
         UpgradesCanvas.SetActive(false);
+        audioSource.PlayOneShot(shopCloseSound);
     }
+
     private void UpdateUpgradeStatusUI()
     {
         string text = "";
