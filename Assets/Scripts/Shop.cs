@@ -73,6 +73,7 @@ public class Shop : MonoBehaviour
 
         if (purchase(currCost))
         {
+            player.keyCount++;
             player.u_roomCount++;
             roomKeyText.text = GrowthFunc.Fibonacci(player.u_roomCount + initRoomKeyCost).ToString();
         }
@@ -174,13 +175,13 @@ public class Shop : MonoBehaviour
             text += "Battery: " + player.u_batteries + "\n";
 
         if (player.u_roomCount > 0)
-            text += "Rooms: " + player.u_roomCount + "\n";
+            text += "Keys purchased: " + player.u_roomCount + "\n";
 
         if (player.u_speed > 0)
             text += "Speed: " + player.u_speed + "\n";
 
         if (player.u_money > 0)
-            text += "Money: " + player.u_money + "\n";
+            text += "Efficiency Upgrades: " + player.u_money + "\n";
 
         if (player.u_vacuumFilterUnlocked)
             text += "Vacuum: Unlocked\n";
