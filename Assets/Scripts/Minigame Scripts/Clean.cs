@@ -10,9 +10,11 @@ public class Clean : MonoBehaviour, IPointerDownHandler, IDragHandler
     [SerializeField] private Canvas _canvas;
     [SerializeField] private int _brushRadius = 20;
 
-    public float percentCleaned => GetCleanedPercent();
+    public float percentCleaned => (float)_clearedPixels / _totalPixels * 100f;
 
     private Texture2D _templateDirtMask;
+    private int _totalPixels;
+    private int _clearedPixels;
 
     private void Start()
     {
@@ -20,59 +22,54 @@ public class Clean : MonoBehaviour, IPointerDownHandler, IDragHandler
         CreateTexture();
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Paint(eventData);
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        Paint(eventData);
-    }
+    public void OnPointerDown(PointerEventData eventData) { Paint(eventData); }
+    public void OnDrag(PointerEventData eventData) { Paint(eventData); }
 
     private void Paint(PointerEventData eventData)
     {
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+        if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(
             _rectTransform,
             eventData.position,
             _canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : _canvas.worldCamera,
-            out Vector2 localPoint))
+            out Vector2 localPoint)) return;
+
+        Rect rect = _rectTransform.rect;
+        int pixelX = (int)((localPoint.x - rect.x) / rect.width  * _templateDirtMask.width);
+        int pixelY = (int)((localPoint.y - rect.y) / rect.height * _templateDirtMask.height);
+
+        int startX = Mathf.Clamp(pixelX - _brushRadius, 0, _templateDirtMask.width  - 1);
+        int startY = Mathf.Clamp(pixelY - _brushRadius, 0, _templateDirtMask.height - 1);
+        int endX   = Mathf.Clamp(pixelX + _brushRadius, 0, _templateDirtMask.width  - 1);
+        int endY   = Mathf.Clamp(pixelY + _brushRadius, 0, _templateDirtMask.height - 1);
+        int blockW = endX - startX + 1;
+        int blockH = endY - startY + 1;
+
+        Color[] block = _templateDirtMask.GetPixels(startX, startY, blockW, blockH);
+
+        for (int x = 0; x < blockW; x++)
         {
-            Rect rect = _rectTransform.rect;
-
-            float normalizedX = (localPoint.x - rect.x) / rect.width;
-            float normalizedY = (localPoint.y - rect.y) / rect.height;
-
-            int pixelX = (int)(normalizedX * _templateDirtMask.width);
-            int pixelY = (int)(normalizedY * _templateDirtMask.height);
-
-            for (int x = -_brushRadius; x <= _brushRadius; x++)
+            for (int y = 0; y < blockH; y++)
             {
-                for (int y = -_brushRadius; y <= _brushRadius; y++)
+                int dx = (startX + x) - pixelX;
+                int dy = (startY + y) - pixelY;
+                if (dx * dx + dy * dy > _brushRadius * _brushRadius) continue;
+
+                int idx = y * blockW + x;
+                if (block[idx].a > 0f)
                 {
-                    if (x * x + y * y > _brushRadius * _brushRadius)
-                        continue;
-
-                    int targetX = pixelX + x;
-                    int targetY = pixelY + y;
-
-                    if (targetX < 0 || targetX >= _templateDirtMask.width ||
-                        targetY < 0 || targetY >= _templateDirtMask.height)
-                        continue;
-
-                    _templateDirtMask.SetPixel(targetX, targetY, new Color(0, 0, 0, 0));
+                    block[idx] = new Color(0, 0, 0, 0);
+                    _clearedPixels++;
                 }
             }
+        }
 
-            _templateDirtMask.Apply();
-            Debug.Log("Cleaned: " + percentCleaned.ToString("F1") + "%");
+        _templateDirtMask.SetPixels(startX, startY, blockW, blockH, block);
+        _templateDirtMask.Apply();
 
-            if (percentCleaned >= 95)
-            {
-                // scrap reward
-                MinigameSpawner.Instance.EndMinigame();
-                Destroy(gameObject);
-            }
+        if (percentCleaned >= 95f)
+        {
+            MinigameSpawner.Instance.EndMinigame();
+            Destroy(gameObject);
         }
     }
 
@@ -82,18 +79,7 @@ public class Clean : MonoBehaviour, IPointerDownHandler, IDragHandler
         _templateDirtMask.SetPixels(_dirtMaskBase.GetPixels());
         _templateDirtMask.Apply();
         _rawImage.texture = _templateDirtMask;
-    }
-    private float GetCleanedPercent()
-    {
-        Color[] pixels = _templateDirtMask.GetPixels();
-        int clearedCount = 0;
-
-        foreach (Color pixel in pixels)
-        {
-            if (pixel.a == 0f)
-                clearedCount++;
-        }
-
-        return (float)clearedCount / pixels.Length * 100f;
+        _totalPixels   = _dirtMaskBase.width * _dirtMaskBase.height;
+        _clearedPixels = 0;
     }
 }
