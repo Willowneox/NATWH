@@ -10,7 +10,7 @@ public class Room : MonoBehaviour
 
     [SerializeField] private Transform _trashContainer;
     [SerializeField] private Collider2D _trashSpawnArea;
-    [SerializeField] private GameObject _trashPrefab;
+    // [SerializeField] private GameObject _trashPrefab;
     [SerializeField] private GameObject _ObsPrefab;
     [SerializeField] private GameObject _PropPrefab;
     [SerializeField] private int _minTrash = 3;
