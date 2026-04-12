@@ -1,15 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using TMPro;
 public class Scenes : MonoBehaviour
 {
     public Sprite[] frames;          // Drag your frames in the Inspector
     public float fps = 12f;          // Frames per second
     public Image displayImage;       // UI Image to display on
 
+    public TMP_Text Text;
     private int currentFrame = 0;
     private float timer = 0f;
+
+    public string[] line; 
 
     void Update()
     {
@@ -24,7 +27,9 @@ public class Scenes : MonoBehaviour
         {
             timer = 0f;
             displayImage.sprite = frames[currentFrame];
+            Text.text = line[currentFrame];
             currentFrame++;
+
         }
         }
     }
