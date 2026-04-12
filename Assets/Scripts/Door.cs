@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum DoorDirection { North, South, East, West }
 
@@ -14,11 +15,15 @@ public class Door : MonoBehaviour
     public Room OwnerRoom { get; set; }
 
     private bool _playerOverlapping = false;
-    private Player _player = Player.Instance;
+    private Player _player;
 
+    private void Start()
+    {
+        _player = Player.Instance;
+    }
     private void Update()
     {
-        if (_playerOverlapping && !IsOpen && Input.GetMouseButtonDown(0))
+        if (_playerOverlapping && !IsOpen && Mouse.current.leftButton.isPressed)
             TryOpen();
     }
 
