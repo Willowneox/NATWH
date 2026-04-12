@@ -31,12 +31,12 @@ public class Shop : MonoBehaviour
     public Button ovalOfficeButton;
 
     [Header("Initial Upgrade Costs")] // these correspond to fibonacci numbers
-    public int initBatteryCost = 3;
-    public int initRoomKeyCost = 1;
-    public int initSpeedCost = 3;
+    public int initBatteryCost = 0;
+    public int initRoomKeyCost = 0;
+    public int initSpeedCost = 1;
     public int initMoneyCost = 8;
-    public int initVacuumCost = 500;
-    public int ovalOfficeCost = 10000;
+    public int initVacuumCost = 8;
+    public int ovalOfficeCost = 20;
     
     /*
      *      For each upgrade, create a new public Text object for the cost
@@ -166,6 +166,7 @@ public class Shop : MonoBehaviour
     public void OpenShop()
     {
         Player.Instance.FreezeMovement();
+        Player.Instance.inShop = true;
         UpgradesCanvas.SetActive(true);
         audioSource.PlayOneShot(shopOpenSound);
     }
@@ -173,6 +174,7 @@ public class Shop : MonoBehaviour
     public void CloseShop()
     {
         Player.Instance.UnfreezeMovement();
+        Player.Instance.inShop = false;
         UpgradesCanvas.SetActive(false);
         audioSource.PlayOneShot(shopCloseSound);
     }

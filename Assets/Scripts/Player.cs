@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     [Header("Battery Life")]
     public float batteryLeft;
+    public bool inShop = false;
 
     [Header("Scrap Count")]
     public int scrap = 0;
@@ -31,13 +32,13 @@ public class Player : MonoBehaviour
     // each upgrade needs a base value, number of upgrades, and benefit per upgrade
     // ex: battery has a base value of 20, u_batteries to track num of battery upgrades owned, and BONUS_CHARGE_PER_BATTERY
     public int u_batteries = 0;
-    public const float B_BATTERY = 20f;
-    public const float U_BONUS_CHARGE_PER_BATTERY = 5f;
+    [SerializeField] private float B_BATTERY = 20f;
+    [SerializeField] private float U_BONUS_CHARGE_PER_BATTERY = 5f;
 
     // Room key upgrade is 1 per time
-    public int u_roomCount = 0; 
-    public const float B_ROOM_COUNT = 1f;
-    public const float U_ROOM_COUNT_PER_UPGRADE = 1f;
+    public int u_roomCount = 0;
+    [SerializeField] private float B_ROOM_COUNT = 1f;
+    [SerializeField] private float U_ROOM_COUNT_PER_UPGRADE = 1f;
 
     // Oval office unlock is a 1 time purchase
     public bool u_ovalOfficeUnlocked = false;
@@ -45,13 +46,13 @@ public class Player : MonoBehaviour
 
     // Speed upgrade
     public int u_speed = 0;
-    public const float B_SPEED = INIT_SPEED_CAP;
-    public const float U_SPEED_PER_UPGRADE = 4f; // Might need to play with this number.
+    [SerializeField] private float B_SPEED = INIT_SPEED_CAP;
+    [SerializeField] private float U_SPEED_PER_UPGRADE = 4f; // Might need to play with this number.
 
     // Scrap earning upgrade...
     public int u_money = 0;
-    public const float B_SCRAP_EARNED = 1.0f;
-    public const float U_SCRAP_EARNED_PER_UPGRADE = 0.2f; // Maybe consider using a growth function for these? idk
+    [SerializeField] private float B_SCRAP_EARNED = 1.0f;
+    [SerializeField] private float U_SCRAP_EARNED_PER_UPGRADE = 0.2f; // Maybe consider using a growth function for these? idk
 
     private Vector2 lastMoveDirection = Vector2.down;
 
@@ -99,6 +100,11 @@ public class Player : MonoBehaviour
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, friction * Time.fixedDeltaTime);
         }
         UpdateAnimation();
+
+        if(inShop)
+        {
+            batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
+        }
     }
 
     private void Move()
