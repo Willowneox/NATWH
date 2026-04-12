@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4fedd95db0c4ae6488c7a3d9e8bf7d9e
+guid: 66981c58c3320d04bbb48e008fc27fa6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3617867708823093519
-    second: dirty_0
+      213: -6873350182323512209
+    second: IMG_2909_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dirty_0
+      name: IMG_2909_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 399
-        height: 400
+        width: 141
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1fe3e33bc70cacdc0800000000000000
-      internalID: -3617867708823093519
+      spriteID: f6c9dbdfc64fc90a0800000000000000
+      internalID: -6873350182323512209
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dirty_0: -3617867708823093519
+      IMG_2909_0: -6873350182323512209
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

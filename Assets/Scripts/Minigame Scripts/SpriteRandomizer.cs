@@ -1,33 +1,25 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
-public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class SpriteRandomizer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private RectTransform rt;
-    private Canvas canvas;
-    private TrashDragSpawner spawner;
-    [SerializeField] private Image sprite;
-
+    public Image sprite;
     public List<Sprite> trashSprites;
+    public RectTransform rt;
 
-    private const float ScaleFactor = 2f;
-
-    [SerializeField] DropZone dropZone;
+    private const float ScaleFactor = 2.5f;
 
     private Vector3 originalScale;
     public float enlargeFactor = 1.1f;
     public float duration = 0.1f;
     private Coroutine scaleCoroutine;
-
-    void Awake()
+    private void Start()
     {
-        rt = GetComponent<RectTransform>();
-        canvas = GetComponentInParent<Canvas>();
         sprite.sprite = trashSprites[Random.Range(0, trashSprites.Count)];
         originalScale = transform.localScale;
 
@@ -51,27 +43,6 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
     }
-
-    public void Init(TrashDragSpawner spawner, DropZone dropZone)
-    {
-        this.spawner = spawner;
-        this.dropZone = dropZone;
-    }
-
-    public void OnBeginDrag(PointerEventData eventData) { }
-    public void OnDrag(PointerEventData eventData)
-    {
-        rt.anchoredPosition += eventData.delta / canvas.scaleFactor;
-    }
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        if (dropZone.Contains(rt))
-        {
-            spawner.PickupTrash();
-            Destroy(gameObject);
-        }
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);

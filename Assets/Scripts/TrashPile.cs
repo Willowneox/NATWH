@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class TrashPile : MonoBehaviour
 {
     public bool isOnTrigger { get; private set; } = false;
-    private bool isCleaned = false;
+    public bool isCleaned = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,7 +17,7 @@ public class TrashPile : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (isOnTrigger && !isCleaned)
+        if (isOnTrigger && Mouse.current.leftButton.wasPressedThisFrame)
         {
             MinigameSpawner.Instance.OnMinigameComplete += OnMinigameComplete;
             MinigameSpawner.Instance.StartMinigame();

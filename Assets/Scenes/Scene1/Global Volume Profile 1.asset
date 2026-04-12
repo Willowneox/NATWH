@@ -37,10 +37,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.358
+    m_Value: 0.218
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.73
+    m_Value: 0.891
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 2.16
   scatter:
     m_OverrideState: 1
     m_Value: 0.419
@@ -119,6 +119,28 @@ MonoBehaviour:
   texture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
+--- !u!114 &-2326807994674944846
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
+  m_Name: LiftGammaGain
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.LiftGammaGain
+  active: 0
+  lift:
+    m_OverrideState: 0
+    m_Value: {x: 1, y: 0.77989763, z: 0.73960847, w: 0}
+  gamma:
+    m_OverrideState: 0
+    m_Value: {x: 0.29328603, y: 0.99528056, z: 1, w: 0}
+  gain:
+    m_OverrideState: 0
+    m_Value: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &-338111467482497737
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -186,6 +208,8 @@ MonoBehaviour:
   - {fileID: -8966378589227784218}
   - {fileID: -7505670430851992943}
   - {fileID: 1556614626343832693}
+  - {fileID: -2326807994674944846}
+  - {fileID: 2288414305181850828}
 --- !u!114 &1556614626343832693
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -201,7 +225,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 23
+    m_Value: 3.33
   tintColor:
     m_OverrideState: 1
     m_Value: {r: 0.8616352, g: 0.3441121, b: 0.3441121, a: 1}
@@ -209,25 +233,25 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   firstFlareIntensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   secondaryFlareIntensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   warpedFlareIntensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   warpedFlareScale:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1}
   samples:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   sampleDimmer:
     m_OverrideState: 0
     m_Value: 0.5
   vignetteEffect:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   startingPosition:
     m_OverrideState: 0
@@ -236,10 +260,10 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1.5
   streaksIntensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   streaksLength:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.5
   streaksOrientation:
     m_OverrideState: 0
@@ -251,8 +275,54 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 4
   chromaticAbberationIntensity:
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &2288414305181850828
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DepthOfField
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 2
+  gaussianStart:
     m_OverrideState: 0
-    m_Value: 0.5
+    m_Value: 10
+  gaussianEnd:
+    m_OverrideState: 0
+    m_Value: 30
+  gaussianMaxRadius:
+    m_OverrideState: 0
+    m_Value: 1
+  highQualitySampling:
+    m_OverrideState: 0
+    m_Value: 0
+  focusDistance:
+    m_OverrideState: 1
+    m_Value: 4.69
+  aperture:
+    m_OverrideState: 0
+    m_Value: 5.6
+  focalLength:
+    m_OverrideState: 0
+    m_Value: 50
+  bladeCount:
+    m_OverrideState: 0
+    m_Value: 5
+  bladeCurvature:
+    m_OverrideState: 0
+    m_Value: 1
+  bladeRotation:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &3548075434589126079
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -293,10 +363,10 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: -0.319
+    m_Value: 0.11
   xMultiplier:
     m_OverrideState: 1
-    m_Value: 0.181
+    m_Value: 0.543
   yMultiplier:
     m_OverrideState: 1
     m_Value: 1

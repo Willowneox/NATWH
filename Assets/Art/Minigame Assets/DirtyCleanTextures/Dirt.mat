@@ -29,11 +29,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DirtMask:
-        m_Texture: {fileID: 2800000, guid: 7101af0a6e67db04c87f94a09b8644e0, type: 3}
+        m_Texture: {fileID: 2800000, guid: dacdef7e166aecc4296c0dd71feb4225, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DirtTexture:
-        m_Texture: {fileID: 2800000, guid: 4fedd95db0c4ae6488c7a3d9e8bf7d9e, type: 3}
+        m_Texture: {fileID: 2800000, guid: eddd82f4eeeacef43b4b31c95c9062c1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 05988f03608adbb429d9147f34e89c8f, type: 3}
+        m_Texture: {fileID: 2800000, guid: be4f7f4f623ab5b45948b8ec4599d749, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
