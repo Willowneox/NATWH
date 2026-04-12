@@ -96,3 +96,8 @@ MonoBehaviour:
   dropZone: {fileID: 0}
   enlargeFactor: 1.1
   duration: 0.1
+  _paperSounds:
+  - {fileID: 8300000, guid: ce9a3c85883d04f4ea1d555f12dc0843, type: 3}
+  - {fileID: 8300000, guid: 017f8a7a49ff913439f6d48b2662f9f4, type: 3}
+  - {fileID: 8300000, guid: 11e6461bc26972a42996dcf15e1cee09, type: 3}
+  _paperSoundVolume: 1

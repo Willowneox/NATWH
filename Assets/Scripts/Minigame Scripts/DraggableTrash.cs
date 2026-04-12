@@ -12,17 +12,15 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     private Canvas canvas;
     private TrashDragSpawner spawner;
     [SerializeField] private Image sprite;
-
     public List<Sprite> trashSprites;
-
     private const float ScaleFactor = 3f;
-
     [SerializeField] DropZone dropZone;
-
     private Vector3 originalScale;
     public float enlargeFactor = 1.1f;
     public float duration = 0.1f;
     private Coroutine scaleCoroutine;
+    [SerializeField] private AudioClip[] _paperSounds = new AudioClip[3];
+    [SerializeField] private float _paperSoundVolume = 1f;
 
     void Awake()
     {
@@ -30,13 +28,10 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         canvas = GetComponentInParent<Canvas>();
         sprite.sprite = trashSprites[Random.Range(0, trashSprites.Count)];
         originalScale = transform.localScale;
-
         float aspectRatio = (float)sprite.sprite.texture.width / sprite.sprite.texture.height;
         float currentWidth = rt.rect.width * ScaleFactor;
         float currentHeight = rt.rect.height * ScaleFactor;
-
         float newWidth, newHeight;
-
         if (currentWidth / currentHeight > aspectRatio)
         {
             newHeight = currentHeight;
@@ -47,7 +42,6 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             newWidth = currentWidth;
             newHeight = currentWidth / aspectRatio;
         }
-
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newHeight);
     }
@@ -59,14 +53,17 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     public void OnBeginDrag(PointerEventData eventData) { }
+
     public void OnDrag(PointerEventData eventData)
     {
         rt.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
+
     public void OnEndDrag(PointerEventData eventData)
     {
         if (dropZone.Contains(rt))
         {
+            PlayRandomSound();
             spawner.PickupTrash();
             Destroy(gameObject);
         }
@@ -77,6 +74,7 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
         scaleCoroutine = StartCoroutine(ScaleTo(originalScale * enlargeFactor));
     }
+
     public void OnPointerExit(PointerEventData eventData)
     {
         if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
@@ -87,7 +85,6 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         Vector3 startScale = transform.localScale;
         float elapsed = 0f;
-
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
@@ -95,5 +92,13 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             yield return null;
         }
         transform.localScale = targetScale;
+    }
+
+    private void PlayRandomSound()
+    {
+        if (_paperSounds.Length == 0) return;
+        AudioClip clip = _paperSounds[Random.Range(0, _paperSounds.Length)];
+        if (clip != null)
+            AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position, _paperSoundVolume);
     }
 }
