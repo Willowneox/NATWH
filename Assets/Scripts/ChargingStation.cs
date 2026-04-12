@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ChargingStation : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class ChargingStation : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (isOnTrigger)
+        if (isOnTrigger && Mouse.current.leftButton.wasPressedThisFrame)
         {
             shop.OpenShop();
             Debug.Log("yes we are openeing the shop");

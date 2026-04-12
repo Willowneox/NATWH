@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class TrashPile : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class TrashPile : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (isOnTrigger && !isCleaned)
+        Debug.Log(isOnTrigger + " " + Mouse.current.leftButton.wasPressedThisFrame);
+        if (isOnTrigger && Mouse.current.leftButton.wasPressedThisFrame)
         {
             MinigameSpawner.Instance.OnMinigameComplete += OnMinigameComplete;
             MinigameSpawner.Instance.StartMinigame();

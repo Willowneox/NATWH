@@ -21,9 +21,9 @@ public class Door : MonoBehaviour
     {
         _player = Player.Instance;
     }
-    private void Update()
+    private void OnMouseDown()
     {
-        if (_playerOverlapping && !IsOpen && Mouse.current.leftButton.isPressed)
+        if (_playerOverlapping && !IsOpen)
             TryOpen();
     }
 
