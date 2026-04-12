@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class TrashPile : MonoBehaviour
 {
     public bool isOnTrigger { get; private set; } = false;
-    private bool isCleaned = false;
+    public bool isCleaned = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
