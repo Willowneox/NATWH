@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     [Header("Battery Life")]
     public float batteryLeft;
+    public bool inShop = false;
 
     [Header("Scrap Count")]
     public int scrap = 0;
@@ -99,6 +100,11 @@ public class Player : MonoBehaviour
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, friction * Time.fixedDeltaTime);
         }
         UpdateAnimation();
+
+        if(inShop)
+        {
+            batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
+        }
     }
 
     private void Move()
