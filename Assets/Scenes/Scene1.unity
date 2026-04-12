@@ -2848,7 +2848,7 @@ MonoBehaviour:
   sr: {fileID: 951248183}
   playerAccel: 3
   speedCap: 5
-  friction: 1
+  friction: 2
   canMove: 1
   rb: {fileID: 951248187}
   batteryLeft: 20
@@ -2856,11 +2856,19 @@ MonoBehaviour:
   scrap: 0
   keyCount: 0
   u_batteries: 0
+  B_BATTERY: 30
+  U_BONUS_CHARGE_PER_BATTERY: 10
   u_roomCount: 0
+  B_ROOM_COUNT: 1
+  U_ROOM_COUNT_PER_UPGRADE: 1
   u_ovalOfficeUnlocked: 0
   u_vacuumFilterUnlocked: 0
   u_speed: 0
+  B_SPEED: 8
+  U_SPEED_PER_UPGRADE: 4
   u_money: 0
+  B_SCRAP_EARNED: 1
+  U_SCRAP_EARNED_PER_UPGRADE: 0.2
 --- !u!212 &951248183
 SpriteRenderer:
   serializedVersion: 2
