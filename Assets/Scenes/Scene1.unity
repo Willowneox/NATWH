@@ -1790,8 +1790,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.97498536, b: 0.5691823, a: 1}
+  m_Sprite: {fileID: -1966150816833212814, guid: fc92f255dabbcea46ace6e48c90eb00b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1808,13 +1808,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723175913}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2, y: -2.35, z: 0}
-  m_LocalScale: {x: 1.8235, y: 1.8235, z: 1.8235}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 5.41, y: -3.6, z: 0}
+  m_LocalScale: {x: 1.063283, y: 1.063283, z: 1.063283}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &723175916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1862,8 +1862,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 1.0801742
+  m_Offset: {x: -0, y: 0}
+  m_Radius: 2.2325187
 --- !u!1 &839155313
 GameObject:
   m_ObjectHideFlags: 0
@@ -4173,12 +4173,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3432020303083270856, guid: c42ff3372e2925a4daaec63404531600, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2159027
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432020303083270856, guid: c42ff3372e2925a4daaec63404531600, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2159027
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432020303083270856, guid: c42ff3372e2925a4daaec63404531600, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2159027
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432020303083270856, guid: c42ff3372e2925a4daaec63404531600, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.76
+      value: -8.55
       objectReference: {fileID: 0}
     - target: {fileID: 3432020303083270856, guid: c42ff3372e2925a4daaec63404531600, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.05
+      value: -0.77
       objectReference: {fileID: 0}
     - target: {fileID: 3432020303083270856, guid: c42ff3372e2925a4daaec63404531600, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4215,6 +4227,18 @@ PrefabInstance:
     - target: {fileID: 4602366844252870985, guid: c42ff3372e2925a4daaec63404531600, type: 3}
       propertyPath: m_Name
       value: TrashPile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899390043770032688, guid: c42ff3372e2925a4daaec63404531600, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899390043770032688, guid: c42ff3372e2925a4daaec63404531600, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899390043770032688, guid: c42ff3372e2925a4daaec63404531600, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
