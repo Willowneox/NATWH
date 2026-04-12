@@ -1,2 +1,27 @@
 fileFormatVersion: 2
 guid: 70c17b6049d729043973e8f6f3d9cb31
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - UpgradesCanvas: {instanceID: 0}
+  - upgradeStatusText: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - shopOpenSound: {fileID: 8300000, guid: dd5ea782898798646a784be691ab4535, type: 3}
+  - shopCloseSound: {fileID: 8300000, guid: 42d0e526bd7ac8d41a6b9cd03bd27475, type: 3}
+  - purchaseSuccessSound: {fileID: 8300000, guid: 85d3b9185eb59e2498de98748f572e12, type: 3}
+  - purchaseFailSound: {fileID: 8300000, guid: c06380e4482f83746bdcb5b992382263, type: 3}
+  - batteryText: {instanceID: 0}
+  - roomKeyText: {instanceID: 0}
+  - ovalOfficeKeyText: {instanceID: 0}
+  - speedText: {instanceID: 0}
+  - vacuumText: {instanceID: 0}
+  - moneyText: {instanceID: 0}
+  - vacuumButton: {instanceID: 0}
+  - ovalOfficeButton: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
