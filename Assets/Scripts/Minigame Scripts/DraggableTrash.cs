@@ -1,10 +1,12 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private RectTransform rt;
     private Canvas canvas;
@@ -17,11 +19,17 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     [SerializeField] DropZone dropZone;
 
+    private Vector3 originalScale;
+    public float enlargeFactor = 1.1f;
+    public float duration = 0.1f;
+    private Coroutine scaleCoroutine;
+
     void Awake()
     {
         rt = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         sprite.sprite = trashSprites[Random.Range(0, trashSprites.Count)];
+        originalScale = transform.localScale;
 
         float aspectRatio = (float)sprite.sprite.texture.width / sprite.sprite.texture.height;
         float currentWidth = rt.rect.width * ScaleFactor;
@@ -62,5 +70,30 @@ public class DraggableTrash : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             spawner.PickupTrash();
             Destroy(gameObject);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
+        scaleCoroutine = StartCoroutine(ScaleTo(originalScale * enlargeFactor));
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
+        scaleCoroutine = StartCoroutine(ScaleTo(originalScale));
+    }
+
+    private IEnumerator ScaleTo(Vector3 targetScale)
+    {
+        Vector3 startScale = transform.localScale;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            transform.localScale = Vector3.Lerp(startScale, targetScale, elapsed / duration);
+            yield return null;
+        }
+        transform.localScale = targetScale;
     }
 }
