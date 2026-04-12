@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     [Header("Scrap Count")]
     public int scrap = 0;
 
+    [Header("Keys Count")]
+    public int keyCount = 0;
+
     [Header("Upgrades")]
     // add u_ before these variables, to make the code easier to read
 
@@ -128,7 +131,7 @@ public class Player : MonoBehaviour
         speedCap = B_SPEED + u_speed * U_SPEED_PER_UPGRADE;
     }
     
-    //animation
+    // animation
     private void UpdateAnimation()
     {
         bool isMoving = rb.linearVelocity.magnitude > 0.1f;
@@ -142,8 +145,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void UseKey(){
-        u_roomCount--;
+    public void UseKey()
+    {
+        keyCount--;
     }
    
     public void FreezeMovement()
