@@ -29,9 +29,9 @@ public class Door : MonoBehaviour
 
     private void TryOpen()
     {
-        if (_player == null || _player.u_roomCount <= 0) return;
+        if (_player == null || _player.keyCount <= 0) return;
 
-        _player.u_roomCount--;
+        _player.keyCount--;
         RoomManager.Instance.OpenDoor(this);
     }
 

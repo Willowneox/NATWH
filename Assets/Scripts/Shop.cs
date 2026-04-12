@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class Shop : MonoBehaviour
 {
     public Player player;
@@ -10,8 +9,14 @@ public class Shop : MonoBehaviour
     public TextMeshProUGUI upgradeStatusText;
 
 
-    // IDEA: Disable buttons you cannot afford
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shopOpenSound;
+    public AudioClip shopCloseSound;
+    public AudioClip purchaseSuccessSound;
+    public AudioClip purchaseFailSound;
 
+    // IDEA: Disable buttons you cannot afford
     [Header("Upgrade Cost Text")]
     public Text batteryText;
     public Text roomKeyText;
@@ -20,19 +25,20 @@ public class Shop : MonoBehaviour
     public Text vacuumText;
     public Text moneyText;
 
-
-
     [Header("Buttons")]
     public Button vacuumButton;
     public Button ovalOfficeButton;
 
-    [Header("Initial Upgrade Costs")] // these correspond to fibonacci numbers
-    public int initBatteryCost = 3;
+    [Header("Initial Upgrade Costs")]
+    // these are INPUTS to the fibonacci function
+    public int initBatteryCost = 0;
+    public int initSpeedCost = 2;
+    public int initMoneyCost = 6;
+
+    // these are RAW VALUES
     public int initRoomKeyCost = 1;
-    public int initSpeedCost = 3;
-    public int initMoneyCost = 8;
-    public int initVacuumCost = 500;
-    public int ovalOfficeCost = 10000;
+    public int initVacuumCost = 8;
+    public int ovalOfficeCost = 20;
     
     /*
      *      For each upgrade, create a new public Text object for the cost
@@ -48,7 +54,7 @@ public class Shop : MonoBehaviour
         UpgradesCanvas.SetActive(false);
         UpdateUpgradeStatusUI();
 
-        batteryText.text = GrowthFunc.Fibonacci(initBatteryCost).ToString();
+        batteryText.text = initBatteryCost.ToString();
         roomKeyText.text = GrowthFunc.Fibonacci(initRoomKeyCost).ToString();
         speedText.text = GrowthFunc.Fibonacci(initSpeedCost).ToString();
         ovalOfficeKeyText.text = ovalOfficeCost.ToString();
@@ -58,25 +64,23 @@ public class Shop : MonoBehaviour
 
     public void BuyBattery()
     {
-        // calculate cost of next battery from growth function
-        int currCost = GrowthFunc.Fibonacci(player.u_batteries + initBatteryCost);
-
-        if (purchase(currCost))
+        if (purchase(initBatteryCost))
         {
             player.u_batteries++;
-            batteryText.text = GrowthFunc.Fibonacci(player.u_batteries + initBatteryCost).ToString();
+            batteryText.text = initBatteryCost.ToString();
         }
         UpdateUpgradeStatusUI();
     }
     
     public void BuyRoomKey()
     {
-        int currCost = GrowthFunc.Fibonacci(player.u_roomCount + initRoomKeyCost);
+        int currCost = initRoomKeyCost;
 
         if (purchase(currCost))
         {
-            player.u_roomCount++;
-            roomKeyText.text = GrowthFunc.Fibonacci(player.u_roomCount + initRoomKeyCost).ToString();
+            player.keyCount++;
+            player.keysPurchased++;
+            roomKeyText.text = initRoomKeyCost.ToString();
         }
         UpdateUpgradeStatusUI();
     }
@@ -86,14 +90,12 @@ public class Shop : MonoBehaviour
     {
         if (player.u_ovalOfficeUnlocked) return; // already bought
 
-        const int cost = 10000; // no growth function bc 1 time upgrade
-
-        if (purchase(cost))
+        if (purchase(ovalOfficeCost))
         {
             player.u_ovalOfficeUnlocked = true;
             // Disable button
 
-
+            
             // TODO: Either trigger end of game cutscene here OR grey out this upgrade and let the player
             // walk over to the specific door.
             ovalOfficeKeyText.text = "N/A";
@@ -120,9 +122,7 @@ public class Shop : MonoBehaviour
     {
         if (player.u_vacuumFilterUnlocked) return;
 
-        const int cost = 500; // no growth function bc 1 time upgrade
-
-        if (purchase(cost))
+        if (purchase(initVacuumCost))
         {
             player.u_vacuumFilterUnlocked = true;
             vacuumText.text = "N/A";
@@ -136,10 +136,10 @@ public class Shop : MonoBehaviour
     public void buyMoneyUpgrade()
     {
         int currCost = GrowthFunc.Fibonacci(player.u_money + initMoneyCost);
-
         if (purchase(currCost))
         {
             player.u_money++;
+            initMoneyCost += 2;
             moneyText.text = GrowthFunc.Fibonacci(player.u_money + initMoneyCost).ToString();
         }
         UpdateUpgradeStatusUI();
@@ -147,27 +147,34 @@ public class Shop : MonoBehaviour
 
     public bool purchase(int cost)
     {
-               
-        if (player.scrap < cost) return false;
+        if (player.scrap < cost)
+        {
+            audioSource.PlayOneShot(purchaseFailSound);
+            return false;
+        }
 
-        Debug.Log("Purchase successful!");
         player.scrap -= cost;
         player.handleUpgrade();
+        audioSource.PlayOneShot(purchaseSuccessSound);
         return true;
-
     }
 
     public void OpenShop()
     {
         Player.Instance.FreezeMovement();
+        Player.Instance.inShop = true;
         UpgradesCanvas.SetActive(true);
+        audioSource.PlayOneShot(shopOpenSound);
     }
-        
-        public void CloseShop()
+
+    public void CloseShop()
     {
         Player.Instance.UnfreezeMovement();
+        Player.Instance.inShop = false;
         UpgradesCanvas.SetActive(false);
+        audioSource.PlayOneShot(shopCloseSound);
     }
+
     private void UpdateUpgradeStatusUI()
     {
         string text = "";
@@ -175,14 +182,14 @@ public class Shop : MonoBehaviour
         if (player.u_batteries > 0)
             text += "Battery: " + player.u_batteries + "\n";
 
-        if (player.u_roomCount > 0)
-            text += "Rooms: " + player.u_roomCount + "\n";
+        if (player.keysPurchased > 0)
+            text += "Keys: " + player.keyCount + "\n";
 
         if (player.u_speed > 0)
             text += "Speed: " + player.u_speed + "\n";
 
         if (player.u_money > 0)
-            text += "Money: " + player.u_money + "\n";
+            text += "Efficiency Upgrades: " + player.u_money + "\n";
 
         if (player.u_vacuumFilterUnlocked)
             text += "Vacuum: Unlocked\n";

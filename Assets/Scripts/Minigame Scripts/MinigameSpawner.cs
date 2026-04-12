@@ -49,6 +49,7 @@ public class MinigameSpawner : MonoBehaviour
 
     public void EndMinigame()
     {
+        Player.Instance.scrap += (int)Mathf.Pow(Player.Instance.U_SCRAP_EARNED_PER_UPGRADE, Player.Instance.u_money);
         Player.Instance.UnfreezeMovement();
         OnMinigameComplete?.Invoke();
         gameObject.SetActive(false);
