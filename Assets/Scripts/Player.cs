@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     public int u_batteries = 0;
     [SerializeField] private float B_BATTERY = 20f;
     [SerializeField] private float U_BONUS_CHARGE_PER_BATTERY = 5f;
+    public float batteryCapacity;
 
     // Oval office unlock is a 1 time purchase
     [Header("Presidents' Key")]
@@ -72,7 +73,8 @@ public class Player : MonoBehaviour
 
         speedCap = B_SPEED;
 
-        batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
+        batteryCapacity = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
+        batteryLeft = batteryCapacity;
         if (sr == null)
             sr = GetComponent<SpriteRenderer>();
 
