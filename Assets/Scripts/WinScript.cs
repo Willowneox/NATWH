@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class WinScript : MonoBehaviour
 {
 
@@ -16,6 +16,7 @@ public class WinScript : MonoBehaviour
         {
             fadeoutCanvas.SetActive(true);
             // load cutscene scene
+            SceneManager.LoadScene("WinScene");
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
