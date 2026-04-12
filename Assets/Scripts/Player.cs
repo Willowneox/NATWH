@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
     public Color flashColor = Color.red;
     public float duration = 0.1f;
     public GameObject FadeOut;
+    public GameObject RestartPanel;
 
     [Header("Movement Settings")]
     public float playerAccel = 15f;
@@ -61,8 +63,14 @@ public class Player : MonoBehaviour
     public int U_SCRAP_EARNED_PER_UPGRADE = 2; // Maybe consider using a growth function for these? idk
 
     private Vector2 lastMoveDirection = Vector2.down;
+    private bool isDead = false;
     public static Player Instance;
 
+    private void Start()
+    {
+        if (RestartPanel != null)
+            RestartPanel.SetActive(false);
+    }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -88,8 +96,9 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (batteryLeft < 0)
+        if (batteryLeft <= 0 && !isDead)
         {
+            isDead = true;
             triggerNoChargeEnding();
             return;
         }
@@ -172,13 +181,23 @@ public class Player : MonoBehaviour
     {
         canMove = true;
     }
-    
-     private void triggerNoChargeEnding()
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Scene1");
+    }
+
+    private void triggerNoChargeEnding()
     {
         FreezeMovement();
-        FadeOut.SetActive(true);
-        //fade.SetBool("Dead", true);
-        // game over screen
+
+        if (FadeOut != null)
+            FadeOut.SetActive(true);
+
+        if (RestartPanel != null)
+            RestartPanel.SetActive(true);
+
+        Time.timeScale = 0f;
     }
 
     public void dmg(float damage)
