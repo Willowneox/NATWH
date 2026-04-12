@@ -10,8 +10,11 @@ public class Room : MonoBehaviour
     [SerializeField] private Transform _trashContainer;
     [SerializeField] private Collider2D _trashSpawnArea;
     [SerializeField] private GameObject _trashPrefab;
+    [SerializeField] private GameObject _ObsPrefab;
     [SerializeField] private int _minTrash = 3;
     [SerializeField] private int _maxTrash = 8;
+    [SerializeField] private int _minObs = 3;
+    [SerializeField] private int _maxObs = 8;
     [SerializeField] private float _trashCheckRadius = 0.5f;
     [SerializeField] private int _maxPlacementAttempts = 10;
 
@@ -64,6 +67,28 @@ public class Room : MonoBehaviour
                 if (Physics2D.OverlapCircle(randomPos, _trashCheckRadius) != null)
                 {
                     Instantiate(_trashPrefab, randomPos, Quaternion.identity, _trashContainer);
+                    break;
+                }
+            }
+        }
+    }
+
+    private void SpawnObstacle()
+    {
+        int count = Random.Range(_minObs, _maxObs + 1);
+        Bounds bounds = _trashSpawnArea.bounds;
+
+        for (int i = 0; i < count; i++)
+        {
+            for (int attempt = 0; attempt < _maxPlacementAttempts; attempt++)
+            {
+                Vector2 randomPos = new Vector2(
+                    Random.Range(bounds.min.x, bounds.max.x),
+                    Random.Range(bounds.min.y, bounds.max.y));
+
+                if (Physics2D.OverlapCircle(randomPos, _trashCheckRadius) != null)
+                {
+                    Instantiate(_ObsPrefab, randomPos, Quaternion.identity, _trashContainer);
                     break;
                 }
             }
