@@ -6392,6 +6392,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 356075186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1849701417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1849701419}
+  - component: {fileID: 1849701418}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1849701418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849701417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c014609f7399a4116989d4dccd916d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scenes
+  frames:
+  - {fileID: -8578418458684398838, guid: 1530d15227b5448f6954eba2292ab03c, type: 3}
+  - {fileID: 6937817954938267909, guid: 3839dbaa38b8d47cba760aea1b7c394e, type: 3}
+  - {fileID: 1824004404925082231, guid: b27bd2b92ccea4c04becdca85a9c3f4a, type: 3}
+  - {fileID: -6470460504253458178, guid: 719b053df43474a0b8526491e70effe1, type: 3}
+  - {fileID: -4178046375966092550, guid: dfa2aede2c0a84efeb9fae554932fce1, type: 3}
+  - {fileID: 4130640169021434097, guid: 552469a0c3929497a8da05fc292c2940, type: 3}
+  - {fileID: 3465286685962602723, guid: ea4472b29e32b42bf9c1f5a9a1189616, type: 3}
+  - {fileID: 7028616704906629411, guid: 014fc0ada75df43bb938178e14dd6c3f, type: 3}
+  fps: 1
+  displayImage: {fileID: 0}
+--- !u!4 &1849701419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849701417}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 953.8596, y: 510.74628, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1888602071
 GameObject:
   m_ObjectHideFlags: 0
