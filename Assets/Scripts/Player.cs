@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
 
     public static Player Instance;
 
-    private void Start()
+    private void Awake()
     {
         if (Instance != null && Instance != this)
         {
