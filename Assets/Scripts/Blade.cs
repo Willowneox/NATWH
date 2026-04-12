@@ -3,19 +3,17 @@ using UnityEngine.InputSystem;
 
 public class Blade : MonoBehaviour
 {
-    private bool cutting;
-    [SerializeField] private Camera mainCamera;
+    public bool cutting;
+    [SerializeField] public Camera mainCamera;
     [SerializeField] private Collider2D bladeCollider;
-    public float minVelo = 0.1f;
+    //public float minVelo = 0.001f;
     private Vector2 direction;
 
-    private TrailRenderer bladeTrail;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         mainCamera = Camera.main;
         bladeCollider = GetComponent<Collider2D>();
-        bladeTrail = GetComponentInChildren<TrailRenderer>();
     }
     private void OnEnable(){
         StopCutting();
@@ -37,13 +35,11 @@ public class Blade : MonoBehaviour
     }
 
     private void StartCutting(){
-        Vector2 newPosition = (Vector2)mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 newPosition = (Vector2)Mouse.current.position.ReadValue();
         transform.position = newPosition;
 
         cutting = true;
         bladeCollider.enabled = true;
-        bladeTrail.enabled = true;
-        bladeTrail.Clear();
     }
 
     private void StopCutting(){
@@ -52,11 +48,11 @@ public class Blade : MonoBehaviour
     }
 
     private void ContCutting(){
-        Vector2 newPosition = (Vector2)mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 newPosition = (Vector2)Mouse.current.position.ReadValue();
         direction = newPosition - (Vector2)transform.position;
 
         float velo = direction.magnitude / Time.deltaTime;
-        bladeCollider.enabled = velo > minVelo;
+        //bladeCollider.enabled = velo > minVelo;
         
         transform.position = newPosition;
     }
