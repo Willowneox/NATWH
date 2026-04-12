@@ -180,7 +180,8 @@ public class Player : MonoBehaviour
     public void dmg(float damage)
     {
         batteryLeft -= damage;
-        FlashRoutine();
+        StartCoroutine(FlashRoutine());
+        Debug.Log("dmg");
     }
 
     private IEnumerator FlashRoutine()
@@ -188,6 +189,7 @@ public class Player : MonoBehaviour
         sr.color = flashColor;
         yield return new WaitForSeconds(duration);
         sr.color = Color.white;
+        Debug.Log("flash");
     }
 }   
 
