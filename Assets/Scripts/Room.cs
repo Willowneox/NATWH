@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -18,6 +19,8 @@ public class Room : MonoBehaviour
     [SerializeField] private int _maxTrash = 9;
     [SerializeField] private float _trashCheckRadius = 1f;
     [SerializeField] private int _maxPlacementAttempts = 10;
+
+    [SerializeField] private List<GameObject> _trashPrefabs;
 
     public bool IsGenerated { get; private set; } = false;
 
@@ -57,7 +60,6 @@ public class Room : MonoBehaviour
     {
         int count = Random.Range(_minTrash, _maxTrash + 1);
         Bounds bounds = _trashSpawnArea.bounds;
-
         for (int i = 0; i < count; i++)
         {
             for (int attempt = 0; attempt < _maxPlacementAttempts; attempt++)
@@ -65,10 +67,10 @@ public class Room : MonoBehaviour
                 Vector2 randomPos = new Vector2(
                     Random.Range(bounds.min.x, bounds.max.x),
                     Random.Range(bounds.min.y, bounds.max.y));
-
-                if (Physics2D.OverlapCircle(randomPos, _trashCheckRadius) != null)
+                if (Physics2D.OverlapCircle(randomPos, _trashCheckRadius) == null)
                 {
-                    Instantiate(_trashPrefab, randomPos, Quaternion.identity, _trashContainer);
+                    GameObject prefab = _trashPrefabs[Random.Range(0, _trashPrefabs.Count)];
+                    Instantiate(prefab, randomPos, Quaternion.identity, _trashContainer);
                     break;
                 }
             }

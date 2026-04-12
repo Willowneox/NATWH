@@ -4,34 +4,23 @@ using UnityEngine;
 
 public class MinigameSpawner : MonoBehaviour
 {
-    public List<GameObject> minigamePrefabs;
-
     private GameObject currMinigame;
-
+    private GameObject _pendingPrefab;
     public static MinigameSpawner Instance;
-
     public event Action OnMinigameComplete;
 
     private void Awake()
     {
         gameObject.SetActive(false);
         if (Instance != null && Instance != this)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             Instance = this;
-        }
     }
+
     private void OnEnable()
     {
-        int index = UnityEngine.Random.Range(0, minigamePrefabs.Count);
-
-        currMinigame = minigamePrefabs[index];
-
-        currMinigame = Instantiate(currMinigame, gameObject.transform);
-
+        currMinigame = Instantiate(_pendingPrefab, gameObject.transform);
         currMinigame.GetComponent<RectTransform>().localPosition = Vector3.zero;
     }
 
@@ -39,10 +28,12 @@ public class MinigameSpawner : MonoBehaviour
     {
         Destroy(currMinigame);
         currMinigame = null;
+        _pendingPrefab = null;
     }
 
-    public void StartMinigame()
+    public void StartMinigame(GameObject minigamePrefab)
     {
+        _pendingPrefab = minigamePrefab;
         Player.Instance.FreezeMovement();
         gameObject.SetActive(true);
     }

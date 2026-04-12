@@ -12,8 +12,6 @@ public class BatteryLifeUI : MonoBehaviour
     public List<Sprite> batterySprite = new List<Sprite>(7);
     public Image image;
     private Player p;
-
-    private bool isRunning = false;
     void Start()
     {
         p = Player.Instance;
