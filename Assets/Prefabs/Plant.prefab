@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7611019653682892138}
   - component: {fileID: 337333364938666667}
   - component: {fileID: 694412708894124518}
-  - component: {fileID: 1572924622073088552}
+  - component: {fileID: 368745798586746495}
   m_Layer: 5
   m_Name: Plant
   m_TagString: Untagged
@@ -114,11 +114,11 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!70 &1572924622073088552
-CapsuleCollider2D:
+--- !u!68 &368745798586746495
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,10 +147,19 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2, y: 100}
-  m_Direction: 0
+  m_EdgeRadius: 20
+  m_Points:
+  - {x: -11.098047, y: -46.808064}
+  - {x: -9.3221245, y: -21.82197}
+  - {x: 3.5220613, y: 5.9847918}
+  - {x: 17.24614, y: 25.280542}
+  - {x: 41.468956, y: 47.33908}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
