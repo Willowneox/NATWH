@@ -31,7 +31,6 @@ public class TrashClickSpawner : MonoBehaviour
         Destroy(trash);
         if(numOfTrash <=0)
         {
-            // scrap reward
             MinigameSpawner.Instance.EndMinigame();
             Destroy(gameObject);
         }
