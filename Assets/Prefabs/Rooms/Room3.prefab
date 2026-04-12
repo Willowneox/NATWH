@@ -452,7 +452,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.10128212}
+  m_Offset: {x: 0, y: -0.24516106}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -462,7 +462,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.625, y: 3.5474358}
+  m_Size: {x: 3.625, y: 4.240322}
   m_EdgeRadius: 0
 --- !u!58 &2153071078094785773
 CircleCollider2D:
@@ -1197,15 +1197,16 @@ MonoBehaviour:
   _trashPrefab: {fileID: 0}
   _ObsPrefab: {fileID: 6707453707204714105, guid: e48a0aebb9afd4ae7a0c47a09e3ef2cd, type: 3}
   _minTrash: 3
-  _minObs: 3
-  _maxObs: 8
-  _maxTrash: 5
-  _trashCheckRadius: 0.5
+  _minObs: 2
+  _maxObs: 5
+  _maxTrash: 6
+  _trashCheckRadius: 1
   _maxPlacementAttempts: 10
   _trashPrefabs:
   - {fileID: 4602366844252870985, guid: edbade7744c9e2845b92de555645ab84, type: 3}
   - {fileID: 4602366844252870985, guid: bc5bf6f25fd2a9d4aa02fbb2637ece4c, type: 3}
   - {fileID: 4602366844252870985, guid: 07ea3f567206b3d4bb1a99c3776225b4, type: 3}
+  - {fileID: 4602366844252870985, guid: 49a0e88a3e7fac14780eff1bbe39cfa6, type: 3}
 --- !u!1 &8765624241683072370
 GameObject:
   m_ObjectHideFlags: 0

@@ -73,7 +73,7 @@ public class Clean : MonoBehaviour, IPointerDownHandler, IDragHandler
 
         Debug.Log("Cleaned: " + percentCleaned.ToString("F1") + "%");
 
-        if (percentCleaned >= 98f)
+        if (percentCleaned >= 97f)
         {
             MinigameSpawner.Instance.EndMinigame();
             Destroy(gameObject);
