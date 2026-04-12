@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
     public Animator animator;
     public SpriteRenderer sr;
+    public Color flashColor = Color.red;
+    public float duration = 0.1f;
 
     [Header("Movement Settings")]
     public float playerAccel = 15f;
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour
     public int u_batteries = 0;
     [SerializeField] private float B_BATTERY = 20f;
     [SerializeField] private float U_BONUS_CHARGE_PER_BATTERY = 5f;
+    public float batteryCapacity;
 
     // Oval office unlock is a 1 time purchase
     [Header("Presidents' Key")]
@@ -72,7 +76,8 @@ public class Player : MonoBehaviour
 
         speedCap = B_SPEED;
 
-        batteryLeft = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
+        batteryCapacity = B_BATTERY + u_batteries * U_BONUS_CHARGE_PER_BATTERY;
+        batteryLeft = batteryCapacity;
         if (sr == null)
             sr = GetComponent<SpriteRenderer>();
 
@@ -175,6 +180,16 @@ public class Player : MonoBehaviour
     public void dmg(float damage)
     {
         batteryLeft -= damage;
+        StartCoroutine(FlashRoutine());
+        Debug.Log("dmg");
+    }
+
+    private IEnumerator FlashRoutine()
+    {
+        sr.color = flashColor;
+        yield return new WaitForSeconds(duration);
+        sr.color = Color.white;
+        Debug.Log("flash");
     }
 }   
 

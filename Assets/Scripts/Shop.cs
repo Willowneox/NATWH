@@ -8,7 +8,7 @@
     {
         public Player player;
         public GameObject UpgradesCanvas;
-        public TextMeshProUGUI upgradeStatusText;
+        public Text upgradeStatusText;
 
         [Header("Audio")]
         public AudioSource audioSource;

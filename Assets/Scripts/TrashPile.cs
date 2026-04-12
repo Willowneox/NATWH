@@ -1,35 +1,46 @@
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class TrashPile : MonoBehaviour
 {
+    [SerializeField] private Sprite _trashSprite;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private GameObject _minigamePrefab;
+
     public bool isOnTrigger { get; private set; } = false;
-    private bool isCleaned = false;
+    public bool isCleaned = false;
+
+    private void Awake()
+    {
+        _spriteRenderer.sprite = _trashSprite;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) isOnTrigger = true;
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) isOnTrigger = false;
     }
+
     private void OnMouseDown()
     {
-        if (isOnTrigger && !isCleaned)
+        if (isOnTrigger && Mouse.current.leftButton.wasPressedThisFrame)
         {
             MinigameSpawner.Instance.OnMinigameComplete += OnMinigameComplete;
-            MinigameSpawner.Instance.StartMinigame();
+            MinigameSpawner.Instance.StartMinigame(_minigamePrefab);
         }
     }
 
     private void OnMinigameComplete()
     {
-        Debug.Log("Minigame complete");
         isCleaned = true;
         Unsubscribe();
         Destroy(gameObject);
     }
+
     private void Unsubscribe()
     {
         MinigameSpawner.Instance.OnMinigameComplete -= OnMinigameComplete;
