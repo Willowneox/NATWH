@@ -10,6 +10,18 @@ public class WinScript : MonoBehaviour
     {
         _player = Player.Instance;
     }
+
+    public void Update()
+    {
+        if (_playerOverlapping && _player.u_ovalOfficeUnlocked)
+        {
+            fadeoutCanvas.SetActive(true);
+            // load cutscene scene
+            SceneManager.LoadScene("WinScene");
+        }
+
+    }
+
     private void OnMouseDown()
     {
         if (_playerOverlapping && _player.u_ovalOfficeUnlocked)
