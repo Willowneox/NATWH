@@ -3668,8 +3668,8 @@ MonoBehaviour:
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   duration: 0.1
   FadeOut: {fileID: 2089374647}
-  RestartPanel: {fileID: 329855526}
-  restartButton: {fileID: 0}
+  RestartPanel: {fileID: 919918510}
+  restartButton: {fileID: 329855526}
   playerAccel: 3
   speedCap: 5
   friction: 1
